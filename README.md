@@ -2,17 +2,7 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. 特点</a>
-<ul>
-<li><a href="#sec-1-1">1.1. ace-pinyin</a></li>
-<li><a href="#sec-1-2">1.2. chinese-pyim</a></li>
-<li><a href="#sec-1-3">1.3. find-by-pinyin-dired</a></li>
-<li><a href="#sec-1-4">1.4. pangu-spacing</a></li>
-<li><a href="#sec-1-5">1.5. pinyin-search</a></li>
-<li><a href="#sec-1-6">1.6. visual-fill-column</a></li>
-<li><a href="#sec-1-7">1.7. vlf（可选）</a></li>
-</ul>
-</li>
+<li><a href="#sec-1">1. 特点</a></li>
 <li><a href="#sec-2">2. 安装</a></li>
 <li><a href="#sec-3">3. 设置</a>
 <ul>
@@ -29,38 +19,21 @@
 # 特点<a id="sec-1" name="sec-1"></a>
 
 chinese设置层的包含了以下和中文写作有关的包：
-
-## ace-pinyin<a id="sec-1-1" name="sec-1-1"></a>
-
-根据汉字的拼音首字母进行ace-jump。
-
-## chinese-pyim<a id="sec-1-2" name="sec-1-2"></a>
-
-目前最好用的emacs拼音输入法，带tooltip。
-
-## find-by-pinyin-dired<a id="sec-1-3" name="sec-1-3"></a>
-
-根据拼音首字母找到并打开文件。
-
-## pangu-spacing<a id="sec-1-4" name="sec-1-4"></a>
-
-以“软空格”的形式在中英混排文档中自动增加汉字与英文单词的间距。
-
-## pinyin-search<a id="sec-1-5" name="sec-1-5"></a>
-
-根据拼音查找
-
-## visual-fill-column<a id="sec-1-6" name="sec-1-6"></a>
-
-使visual-line-mode按照fill-column的设置值wrap。
-
-## vlf（可选）<a id="sec-1-7" name="sec-1-7"></a>
-
-使emacs可以轻松处理大文件，便于编辑输入法词库文件（大多在10M以上）。
+-   **ace-pinyin:** 根据汉字的拼音首字母进行ace-jump。
+-   **chinese-pyim:** 目前最好用的emacs拼音输入法，带tooltip。
+-   **find-by-pinyin-dired:** 根据拼音首字母找到并打开文件。
+-   **pangu-spacing:** 以“软空格”的形式在中英混排文档中自动增加汉字与英文单词的间距。
+-   **pinyin-search:** 顾名思义，根据汉字拼音首字母进行查找。
+-   **visual-fill-column:** 使visual-line-mode按照fill-column的值wrap。
+-   **vlf（可选）:** 使emacs可以轻松处理大文件，便于编辑输入法词库文件（大多在10MB以上）。
 
 # 安装<a id="sec-2" name="sec-2"></a>
 
-添加chinese层到spacemacs
+安装非常简单，首先
+
+    git clone https://github.com/et2010/Chinese.git ~/.emacs.d/private
+
+然后在你的.spacemacs文件中添加chinese设置层。
 
 # 设置<a id="sec-3" name="sec-3"></a>
 
@@ -75,6 +48,7 @@ chinese设置层的包含了以下和中文写作有关的包：
                                 :powerline-scale 1.2)
 
 Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方便进行下边的设置，我将字号修改为14.（当然，这是试出来的。）
+
 上述设置可以在spacemacs的配置文件中找到。
 
 ## 设置中文字体<a id="sec-3-2" name="sec-3-2"></a>
@@ -101,6 +75,7 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方�
             ))
 
 这里我通过试验发现英文字号为14 （字号用 `C-u C-x =` 查看），中文字号为16刚好可以实现等宽。因此将英文字体直接设为14, 放大倍数设为1.0 （即不变）。中文字体设为默认字号（13）的1.15倍即16号。英文字体不放大，只放大中文字体――这样设置是最优的，较少发生行高跳动等glitch。
+
 请将这一段代码插入到dotspacemacs/config函数中去。
 
 ## 换行设置<a id="sec-3-4" name="sec-3-4"></a>
