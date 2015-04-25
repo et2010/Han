@@ -84,7 +84,7 @@ which require an initialization must be listed explicitly in the list.")
   "Initialize pangu-spacing"
   (use-package pangu-spacing
     :diminish pangu-spacing-mode
-    :commands pangu-spacing-mode))
+    :init (add-hook 'org-mode-hook 'pangu-spacing-mode)))
 
 (defun chinese/init-pinyin-search ()
   "Initialize pinyin-search"
