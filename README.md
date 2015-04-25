@@ -74,11 +74,16 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方�
             (".*NSimSun.*" . 1.15)
             ))
 
-这里我通过试验发现英文字号为14 （字号用 `C-u C-x =` 查看），中文字号为16刚好可以实现等宽。因此将英文字体直接设为14, 放大倍数设为1.0 （即不变）。中文字体设为默认字号（13）的1.15倍即16号。（ **注意你的电脑上设置可能会不同** ）英文字体不放大，只放大中文字体――这样设置是最优的，较少发生行高跳动等glitch。
+这里我通过试验发现英文字号为14 （字号用 `C-u C-x =` 查看），中文字号为16刚好可以实现等宽。因此将英文字体直接设为14, 放大倍数设为1.0 （即不变）。中文字体设为默认字号（13）的1.15倍即16号（ **注意你的电脑上设置可能会不同** ）。英文字体不放大，只放大中文字体――这样设置是最优的，较少发生行高跳动等glitch。
 
 **请将这一段代码插入到dotspacemacs/config函数中去。**
 
 ## 换行设置<a id="sec-3-4" name="sec-3-4"></a>
 
 推荐使用visual-line-mode进行软换行（即不在行尾插入回车）。但visual-line只能在window边缘换行，不够美观。可以用visual-fill-column在fill-column处换行。
-使用方法，toggle visual-line-mode, visual-fill-column会自动加载。
+
+使用方法，开启 visual-line-mode, visual-fill-column会自动加载。但需要注意，最好将word-wrap的值设为nil，否则中英文混排时换行都发生在英文单词结束处，非常难看。可以将下面一段代码加到你的dotspacemacs/config函数中：
+
+    (add-hook 'visual-line-mode-hook
+              (lambda ()
+                (setq word-wrap nil)))
