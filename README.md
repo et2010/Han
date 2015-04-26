@@ -34,7 +34,7 @@ chinese设置层整合了ELPA中和中文写作有关的包，目的是为使用
 
     git clone https://github.com/et2010/Chinese.git ~/.emacs.d/private
 
-然后在你的.spacemacs文件中添加chinese设置层。配置偏好选择emacs，这是因为本设置层主要针对emacs类配置进行优化，并且在进行行内输入时，emacs比vim的insert state更好用。
+然后在你的.spacemacs文件中添加chinese设置层。配置类型选择emacs，这是因为本设置层主要针对emacs型配置进行优化，并且在进行行内输入时，emacs比vim的insert state更好用。
 
 # 设置<a id="sec-3" name="sec-3"></a>
 
