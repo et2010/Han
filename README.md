@@ -10,6 +10,7 @@
 <li><a href="#sec-3-2">3.2. 设置中文字体</a></li>
 <li><a href="#sec-3-3">3.3. 设置中英文字体等宽</a></li>
 <li><a href="#sec-3-4">3.4. 换行设置</a></li>
+<li><a href="#sec-3-5">3.5. 输入法词库设置</a></li>
 </ul>
 </li>
 </ul>
@@ -33,7 +34,7 @@ chinese设置层整合了ELPA中和中文写作有关的包，目的是为使用
 
     git clone https://github.com/et2010/Chinese.git ~/.emacs.d/private
 
-然后在你的.spacemacs文件中添加chinese设置层。
+然后在你的.spacemacs文件中添加chinese设置层。配置偏好选择emacs，这是因为本设置层主要针对emacs类配置进行优化，并且在进行行内输入时，emacs比vim的insert state更好用。
 
 # 设置<a id="sec-3" name="sec-3"></a>
 
@@ -81,3 +82,7 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方�
 ## 换行设置<a id="sec-3-4" name="sec-3-4"></a>
 
 本layer使用visual-line-mode进行软换行（即不在行尾插入回车）。但visual-line只能在window边缘换行，不够美观。所以加入了visual-fill-column，实现在fill-column处换行。
+
+## 输入法词库设置<a id="sec-3-5" name="sec-3-5"></a>
+
+按照chinese-pyim的文档说明，配置中词库文件的路径必须要使用绝对路径，因此这里还要手动修改词库路径。需要修改的地方有两处，即packages.el文件中默认词库路径，以及funcs.el中用于切换词库的函数。

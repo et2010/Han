@@ -66,6 +66,16 @@ which require an initialization must be listed explicitly in the list.")
             (:name "SogouPY"
                    :file "/home/neo/.emacs.d/pyim/dicts/sogou.pyim"
                    :coding utf-8-unix)))
+    ;; switch to English input when helm buffer activate.
+    (setq pyim-english-input-switch-function
+          'pyim-helm-buffer-active-p)
+    ;; turn off evil escape when default input method (pyim) on.
+    ;; if not, the first key of escap sequence will cause a problem
+    ;; involving hitting enter to fast insert char "f" after typing
+    ;; on tooltip.
+    (add-hook 'input-method-activate-hook 'pyim-turn-off-evil-escape t)
+    ;; after input method deactivated, turn on evil escape.
+    (add-hook 'input-method-deactivate-hook 'pyim-turn-on-evil-escape t)
     ))
 
 ;; (defun chinese/init-chinese-remote-input ()
