@@ -16,7 +16,7 @@
   (interactive)
   (setq pyim-dicts
         '((:name "BigDict"
-                 :file "/home/neo/.emacs.d/pyim/dicts/bigdict.pyim"
+                 :file "~/.emacs.d/pyim/dicts/bigdict.pyim"
                  :coding utf-8-unix)))
   (pyim-restart-1 t))
 
@@ -24,7 +24,7 @@
   (interactive)
   (setq pyim-dicts
         '((:name "SogouPY"
-                 :file "/home/neo/.emacs.d/pyim/dicts/sogou.pyim"
+                 :file "~/.emacs.d/pyim/dicts/sogou.pyim"
                  :coding utf-8-unix)))
   (pyim-restart-1 t))
 

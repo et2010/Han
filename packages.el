@@ -13,7 +13,7 @@
 (defvar chinese-packages
   '(
     ace-pinyin
-    cdlatex
+    ;; cdlatex
     ;; chinese-fonts-setup
     chinese-pyim
     ;; chinese-remote-input
@@ -67,10 +67,10 @@ which require an initialization must be listed explicitly in the list.")
     (setq pyim-tooltip-width-adjustment 1.2)
     (setq pyim-dicts
           '((:name "BigDict"
-                   :file "/home/neo/.emacs.d/pyim/dicts/bigdict.pyim"
+                   :file "~/.emacs.d/pyim/dicts/bigdict.pyim"
                    :coding utf-8-unix)
             (:name "SogouPY"
-                   :file "/home/neo/.emacs.d/pyim/dicts/sogou.pyim"
+                   :file "~/.emacs.d/pyim/dicts/sogou.pyim"
                    :coding utf-8-unix)))
     ;; switch to English input when helm buffer activate.
     (setq pyim-english-input-switch-function

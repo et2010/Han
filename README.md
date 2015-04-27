@@ -10,7 +10,7 @@
 <li><a href="#sec-3-2">3.2. 设置中文字体</a></li>
 <li><a href="#sec-3-3">3.3. 设置中英文字体等宽</a></li>
 <li><a href="#sec-3-4">3.4. 换行设置</a></li>
-<li><a href="#sec-3-5">3.5. 输入法词库设置</a></li>
+<li><a href="#sec-3-5">3.5. 词库文件</a></li>
 </ul>
 </li>
 </ul>
@@ -84,6 +84,12 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方�
 
 本layer使用visual-line-mode进行软换行（即不在行尾插入回车）。但visual-line只能在window边缘换行，不够美观。所以加入了visual-fill-column，实现在fill-column处换行。
 
-## 输入法词库设置<a id="sec-3-5" name="sec-3-5"></a>
+打开方法：用 `SPC t L` 打开visual-line-mode即可。
 
-按照chinese-pyim的文档说明，配置中词库文件的路径必须要使用绝对路径，因此这里还要手动修改词库路径。需要修改的地方有两处，即packages.el文件中默认词库路径，以及funcs.el中用于切换词库的函数。
+## 词库文件<a id="sec-3-5" name="sec-3-5"></a>
+
+这里提供两个词库文件，分别是bigdict.pyim和sogou.pyim。将这两个文件拷贝到 **~/.emacs.d/pyim/dict** 路径下，根据需要用pyim的词库管理命令选择词库（推荐使用搜狗词库）。
+
+词库文件百度云链接：
+-   **bigdict:** <http://pan.baidu.com/s/1eQCO3o2> 密码：1dr6
+-   **sogou:** <http://pan.baidu.com/s/1bn53cgZ> 密码：z3vu
