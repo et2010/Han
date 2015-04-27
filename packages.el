@@ -13,6 +13,7 @@
 (defvar chinese-packages
   '(
     ace-pinyin
+    cdlatex
     ;; chinese-fonts-setup
     chinese-pyim
     ;; chinese-remote-input
@@ -38,6 +39,11 @@ which require an initialization must be listed explicitly in the list.")
   (use-package ace-pinyin
     :config
     (ace-pinyin-global-mode 1)))
+
+(defun chinese/init-cdlatex ()
+  "Initialize cdlatex"
+  (use-package cdlatex
+    :init (add-hook 'org-mode-hook 'org-cdlatex-mode)))
 
 ;; (defun chinese/init-chinese-fonts-setup ()
 ;;   "Initialize chinese-fonts-setup"

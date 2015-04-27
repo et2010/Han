@@ -21,6 +21,7 @@
 
 chinese设置层整合了ELPA中和中文写作有关的包，目的是为使用spacemacs进行中文写作的同学提供帮助，节省大家的时间。其中包含了以下和中文写作有关的包：
 -   **ace-pinyin:** 根据汉字的拼音首字母进行ace-jump。
+-   **cdlatex:** 方便在org中输入latex公式。
 -   **chinese-pyim:** 目前最好用的emacs拼音输入法，带tooltip。
 -   **find-by-pinyin-dired:** 根据拼音首字母找到并打开文件。
 -   **pangu-spacing:** 以“软空格”的形式在中英混排文档中自动增加汉字与英文单词的间距。
