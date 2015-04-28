@@ -276,11 +276,6 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方�
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">--------------------------------</th>
-</tr>
-
-
-<tr>
 <th scope="col" class="left">英文字体(12)</th>
 </tr>
 </thead>
@@ -288,11 +283,6 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方�
 <tbody>
 <tr>
 <td class="left">Linux Libertine Mono O (serif)</td>
-</tr>
-
-
-<tr>
-<td class="left">-------------------------------</td>
 </tr>
 </tbody>
 </table>
