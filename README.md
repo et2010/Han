@@ -71,7 +71,7 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方�
 
 另外，当使用GUI的emacs时，默认的中文字符宽度一般不等于英文字符宽度的两倍，这样会导致用字符画的表格非常丑。解决办法是分别采用不同字号（高度）的中英文字体，使中文字符的宽度刚好等于英文字符宽度的两倍。通过试验发现不少常用的英文等宽字体字号设为14，中文字号设为16时可以满足宽度要求。注意这里使用的是绝对字号，不是放大系数。且中英文字符高度都以像素为单位，因而不论你的屏幕ppi是多少，这样设置都可以满足中英文字体等宽。使用上述字号，以下表格中的中英字体任意组合都可以满足等宽：
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table> 
 
 
 <colgroup>
@@ -125,7 +125,7 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方�
 </tbody>
 </table>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table>
 
 
 <colgroup>
@@ -234,7 +234,7 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方�
 </tbody>
 </table>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table>
 
 
 <colgroup>

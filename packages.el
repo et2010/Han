@@ -63,7 +63,7 @@ which require an initialization must be listed explicitly in the list.")
   (use-package chinese-pyim
     :init
     (setq default-input-method "chinese-pyim")
-    (global-set-key (kbd "C-<SPC>") 'toggle-input-method)
+    (define-key evil-emacs-state-map (kbd "C-<SPC>") 'toggle-input-method)
     :config
     (setq pyim-use-tooltip t)
     (setq pyim-tooltip-width-adjustment 1.2)
