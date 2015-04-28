@@ -268,7 +268,7 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方�
 </tbody>
 </table>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table>
 
 
 <colgroup>
