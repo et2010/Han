@@ -37,13 +37,15 @@ which require an initialization must be listed explicitly in the list.")
 (defun chinese/init-ace-pinyin ()
   "Initialize ace-pinyin"
   (use-package ace-pinyin
+    :init
+    (define-key evil-normal-state-map (kbd "SPC d") 'ace-pinyin-dwim)
     :config
     (ace-pinyin-global-mode 1)))
 
-(defun chinese/init-cdlatex ()
-  "Initialize cdlatex"
-  (use-package cdlatex
-    :init (add-hook 'org-mode-hook 'org-cdlatex-mode)))
+;; (defun chinese/init-cdlatex ()
+;;   "Initialize cdlatex"
+;;   (use-package cdlatex
+;;     :init (add-hook 'org-mode-hook 'org-cdlatex-mode)))
 
 ;; (defun chinese/init-chinese-fonts-setup ()
 ;;   "Initialize chinese-fonts-setup"
@@ -100,7 +102,7 @@ which require an initialization must be listed explicitly in the list.")
   "Initialize pangu-spacing"
   (use-package pangu-spacing
     :diminish pangu-spacing-mode
-    :init (add-hook 'org-mode-hook 'pangu-spacing-mode)))
+    :init (add-hook 'org-mode-hook 'pangu-spacing-mode t)))
 
 (defun chinese/init-pinyin-search ()
   "Initialize pinyin-search"
