@@ -13,6 +13,11 @@
 <li><a href="#sec-3-5">3.5. 词库文件</a></li>
 </ul>
 </li>
+<li><a href="#sec-4">4. 使用</a>
+<ul>
+<li><a href="#sec-4-1">4.1. 快速定位</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -71,8 +76,7 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方�
 
 另外，当使用GUI的emacs时，默认的中文字符宽度一般不等于英文字符宽度的两倍，这样会导致用字符画的表格非常丑。解决办法是分别采用不同字号（高度）的中英文字体，使中文字符的宽度刚好等于英文字符宽度的两倍。通过试验发现不少常用的英文等宽字体字号设为14，中文字号设为16时可以满足宽度要求。注意这里使用的是绝对字号，不是放大系数。且中英文字符高度都以像素为单位，因而不论你的屏幕ppi是多少，这样设置都可以满足中英文字体等宽。使用上述字号，以下表格中的中英字体任意组合都可以满足等宽：
 
-<table> 
-
+<table>
 
 <colgroup>
 <col  class="left" />
@@ -126,7 +130,6 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方�
 </table>
 
 <table>
-
 
 <colgroup>
 <col  class="left" />
@@ -236,7 +239,6 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方�
 
 <table>
 
-
 <colgroup>
 <col  class="left" />
 </colgroup>
@@ -269,7 +271,6 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方�
 </table>
 
 <table>
-
 
 <colgroup>
 <col  class="left" />
@@ -306,3 +307,9 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为13. 为了方�
 词库文件百度云链接：
 -   **bigdict:** <http://pan.baidu.com/s/1eQCO3o2> 密码：1dr6
 -   **sogou:** <http://pan.baidu.com/s/1bn53cgZ> 密码：z3vu
+
+# 使用<a id="sec-4" name="sec-4"></a>
+
+## 快速定位<a id="sec-4-1" name="sec-4-1"></a>
+
+可以用 `SPC : helm-pinyin-search` 快速定位章节位置，在normal state下用 `C-s`, `C-r` 进行快速拼音搜索。在可见范围内（normal状态下）用 `SPC SPC` Ace jump到英文单词，用 `SPC d` Ace jump到某个汉字或英文字母。

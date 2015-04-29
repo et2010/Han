@@ -13,7 +13,7 @@
 (defvar chinese-packages
   '(
     ace-pinyin
-    ;; cdlatex
+    cdlatex
     ;; chinese-fonts-setup
     chinese-pyim
     ;; chinese-remote-input
@@ -42,10 +42,10 @@ which require an initialization must be listed explicitly in the list.")
     :config
     (ace-pinyin-global-mode 1)))
 
-;; (defun chinese/init-cdlatex ()
-;;   "Initialize cdlatex"
-;;   (use-package cdlatex
-;;     :init (add-hook 'org-mode-hook 'org-cdlatex-mode)))
+(defun chinese/init-cdlatex ()
+  "Initialize cdlatex"
+  (use-package cdlatex
+    :init (add-hook 'org-mode-hook 'turn-on-org-cdlatex)))
 
 ;; (defun chinese/init-chinese-fonts-setup ()
 ;;   "Initialize chinese-fonts-setup"
@@ -107,7 +107,14 @@ which require an initialization must be listed explicitly in the list.")
 (defun chinese/init-pinyin-search ()
   "Initialize pinyin-search"
   (use-package pinyin-search
-    :commands (pinyin-search helm-pinyin-search)))
+    :init
+    (global-unset-key (kbd "C-s"))
+    (global-unset-key (kbd "C-r"))
+    (define-key evil-emacs-state-map (kbd "C-s") 'isearch-forward)
+    (define-key evil-emacs-state-map (kbd "C-r") 'isearch-backward)
+    (define-key evil-normal-state-map (kbd "C-s") 'isearch-forward-pinyin)
+    (define-key evil-normal-state-map (kbd "C-r") 'isearch-backward-pinyin)))
+
 
 (defun chinese/init-visual-fill-column ()
   "Initialize visual-fill-column"
