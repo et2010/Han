@@ -14,7 +14,6 @@
   '(
     ace-pinyin
     cdlatex
-    ;; chinese-fonts-setup
     chinese-pyim
     ;; chinese-remote-input
     ;; chinese-word-at-point               ; useful when writing emacs packages to handle Chinese character
@@ -46,17 +45,6 @@ which require an initialization must be listed explicitly in the list.")
   "Initialize cdlatex"
   (use-package cdlatex
     :init (add-hook 'org-mode-hook 'turn-on-org-cdlatex)))
-
-;; (defun chinese/init-chinese-fonts-setup ()
-;;   "Initialize chinese-fonts-setup"
-;;   (use-package chinese-fonts-setup
-;;     :commands
-;;     (cfs-edit-profile
-;;      cfs-test-fontsizes-at-point
-;;      cfs-increment-fontsize-at-point
-;;      cfs-decrement-fontsize-at-point)
-;;     :config
-;;     (setq cfs-profiles '("coding" "writing" "reading"))))
 
 (defun chinese/init-chinese-pyim ()
   "Initialize chinese-pyim"
