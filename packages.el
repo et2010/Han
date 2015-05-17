@@ -12,22 +12,19 @@
 
 (defvar chinese-packages
   '(
+    ;; package chineses go here
     ace-pinyin
-    cdlatex
     chinese-pyim
-    ;; chinese-remote-input
-    ;; chinese-word-at-point               ; useful when writing emacs packages to handle Chinese character
     find-by-pinyin-dired
-    pangu-spacing;; package chineses go here
+    pangu-spacing
     pinyin-search
     visual-fill-column
-    vlf
+    ;; vlf
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
 
 (defvar chinese-excluded-packages
-  ;; '(chinese-fonts-setup)
   "List of packages to exclude.")
 
 ;; For each package, define a function chinese/init-<package-chinese>
@@ -40,11 +37,6 @@ which require an initialization must be listed explicitly in the list.")
     (define-key evil-normal-state-map (kbd "SPC d") 'ace-pinyin-dwim)
     :config
     (ace-pinyin-global-mode 1)))
-
-(defun chinese/init-cdlatex ()
-  "Initialize cdlatex"
-  (use-package cdlatex
-    :init (add-hook 'org-mode-hook 'turn-on-org-cdlatex)))
 
 (defun chinese/init-chinese-pyim ()
   "Initialize chinese-pyim"
@@ -67,19 +59,11 @@ which require an initialization must be listed explicitly in the list.")
           'pyim-helm-buffer-active-p)
     ;; turn off evil escape when default input method (pyim) on.
     ;; if not, the first key of escap sequence will cause a problem
-    ;; involving hitting enter to fast insert char "f" after typing
-    ;; on tooltip.
+    ;; when trying to fast insert corresponding letter by hitting Enter.
     (add-hook 'input-method-activate-hook 'pyim-turn-off-evil-escape t)
     ;; after input method deactivated, turn on evil escape.
     (add-hook 'input-method-deactivate-hook 'pyim-turn-on-evil-escape t)
     ))
-
-;; (defun chinese/init-chinese-remote-input ()
-;;   "Initialize chinese-remote-input"
-;;   (use-package chinese-remote-input
-;;     :commands
-;;     (remote-input-toggle
-;;      remote-input-terminal)))
 
 (defun chinese/init-find-by-pinyin-dired ()
   "Initialize find-by-pinyin-dired"
@@ -112,14 +96,14 @@ which require an initialization must be listed explicitly in the list.")
     ;; 最好将word-wrap的值设为nil，否则中英文混排时换行都发生在英文单词结束处，非常难看。
     (add-hook 'visual-line-mode-hook (lambda () (setq word-wrap nil)))))
 
-(defun chinese/init-vlf ()
-  "Initialize vlf"
-  (use-package vlf
-    :init
-    (progn
-      (require 'vlf-setup)
-      (custom-set-variables
-       '(vlf-application 'dont-ask)))))
+;; (defun chinese/init-vlf ()
+;;   "Initialize vlf"
+;;   (use-package vlf
+;;     :init
+;;     (progn
+;;       (require 'vlf-setup)
+;;       (custom-set-variables
+;;        '(vlf-application 'dont-ask)))))
 
 ;;
 ;; Often the body of an initialize function uses `use-package'
