@@ -10,17 +10,15 @@
 ;;
 ;;; License: GPLv3
 
-(defvar chinese-pre-extensions
+(setq chinese-pre-extensions
   '(
     ;; pre extension chineses go here
-    )
-  "List of all extensions to load before the packages.")
+    ))
 
-(defvar chinese-post-extensions
+(setq chinese-post-extensions
   '(
     ;; post extension chineses go here
-    )
-  "List of all extensions to load after the packages.")
+    ))
 
 ;; For each extension, define a function chinese/init-<extension-chinese>
 ;;

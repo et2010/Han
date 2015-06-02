@@ -10,7 +10,7 @@
 ;;
 ;;; License: GPLv3
 
-(defvar chinese-packages
+(setq chinese-packages
   '(
     ;; package chineses go here
     ace-pinyin
@@ -20,12 +20,9 @@
     pinyin-search
     visual-fill-column
     ;; vlf
-    )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+    ))
 
-(defvar chinese-excluded-packages
-  "List of packages to exclude.")
+(setq chinese-excluded-packages '())
 
 ;; For each package, define a function chinese/init-<package-chinese>
 ;;
