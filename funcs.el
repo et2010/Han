@@ -10,22 +10,21 @@
 ;;
 ;;; License: GPLv3
 
-;; from
+;; Variables
+
+(defvar han-default-input-method 'pinyin
+  "The default chiense input method. Can be `wubi` or `pinyin`.")
+
+(defvar han-enable-youdao-dict nil
+  "Enble YouDao Dict translation service.")
 
 (defun pyim-use-dict:bigdict ()
   (interactive)
   (setq pyim-dicts
         '((:name "BigDict"
-                 :file "~/.emacs.d/pyim/dicts/bigdict.pyim"
-                 :coding utf-8-unix)))
-  (pyim-restart-1 t))
-
-(defun pyim-use-dict:sogou ()
-  (interactive)
-  (setq pyim-dicts
-        '((:name "SogouPY"
-                 :file "~/.emacs.d/pyim/dicts/sogou.pyim"
-                 :coding utf-8-unix)))
+                 :file "~/.emacs.d/.cache/pyim-bigdict.pyim"
+                 :coding utf-8-unix
+                 :dict-type pinyin-dict)))
   (pyim-restart-1 t))
 
 (defun pyim-helm-buffer-active-p ()
@@ -33,7 +32,7 @@
    "helm"
    (buffer-name
     (window-buffer
-     (active-minibuffer-window)))))
+     (active-minibuffer-window))) t))
 
 (defun pyim-turn-off-evil-escape ()
   "Turn off evil escape by remapping the key."
