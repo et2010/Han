@@ -38,6 +38,20 @@
 
 然后在你的.spacemacs文件中添加han设置层。配置类型推荐选择hybrid：
 
+    (defun dotspacemacs/layers ()
+      (setq-default
+       dotspacemacs-configuration-layers
+       '(
+         (han :variables
+              han-enable-youdao-dict t)
+         ))
+      )
+    
+    (defun dotspacemacs/init ()
+      (setq-default
+       dotspacemacs-editing-style 'hybrid)
+      )
+
 # 设置<a id="orgheadline6"></a>
 
 ## 设置英文字体<a id="orgheadline3"></a>
@@ -45,12 +59,13 @@
 首先，利用spacemacs自身提供的函数设置英文字体：
 
     (defun dotspacemacs/init ()
-      dotspacemacs-default-font '("Source Code Pro"
-                                  :size 14
-                                  :weight normal
-                                  :width normal
-                                  :powerline-scale 1.2)
-      )
+      (setq-default
+       dotspacemacs-default-font '("Source Code Pro"
+                                   :size 14
+                                   :weight normal
+                                   :width normal
+                                   :powerline-scale 1.2)
+       ))
 
 Spacemacs默认的字体为“Source Code Pro”，默认字号为12. 为了实现中英文混排时字体的等宽，我将字号修改为14.（当然，这是试出来的。）
 
