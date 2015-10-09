@@ -37,7 +37,7 @@
 git clone https://github.com/et2010/Chinese.git ~/.emacs.d/private/han
 #+end_src
 
-注意：在没有官方Chinese layer之前，这个layer就叫Chinese，之后为了避免冲突，我将它改名为han。
+*注意：在没有官方Chinese layer之前，这个layer就叫Chinese，之后为了避免冲突，我将它改名为han。*
 
 然后在你的.spacemacs文件中添加han设置层。配置类型推荐选择hybrid：
 
