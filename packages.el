@@ -66,13 +66,11 @@
     :if (eq 'pinyin han-default-input-method)
     :init
     (progn
-      (setq pyim-use-tooltip t
-            pyim-dicts
-            '((:name "BigDict"
-                     :file "~/.emacs.d/.cache/pyim-bigdict.pyim"
-                     :coding utf-8-unix
-                     :dict-type pinyin-dict))
-            pyim-personal-file "~/.emacs.d/.cache/pyim-personal.txt"
+      (setq pyim-use-tooltip nil
+            ;; pyim-enable-words-predict nil
+            pyim-dicts-directory spacemacs-cache-directory
+            pyim-personal-file (concat spacemacs-cache-directory
+                                       "pyim-personal.txt")
             default-input-method "chinese-pyim")
       (evilify pyim-dicts-manager-mode pyim-dicts-manager-mode-map)
       ;; switch to English input when helm buffer activate.
