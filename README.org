@@ -11,6 +11,15 @@
 #+EXCLUDE_TAGS: noexport
 #+CREATOR: Emacs 24.5.1 (Org mode 8.3.2)
 
+* 目录                                                                 :TOC:
+ - [[#特点][特点]]
+ - [[#安装][安装]]
+ - [[#设置][设置]]
+   - [[#设置英文字体][设置英文字体]]
+   - [[#设置中文字体][设置中文字体]]
+   - [[#关于中英文字体等宽][关于中英文字体等宽]]
+ - [[#keybindings][Keybindings]]
+
 * 特点
 这个private layer作为spacemacs官方[[https://github.com/syl20bnr/spacemacs/tree/master/layers/chinese][Chinese layer]]的一个替代， *大部份设置都与Chinese layer相同，在它的基础上做了少量修改。* 之所以另外开一个layer，主要是因为官方的layer还不能完全满足我个人的需要。本设置层整合了ELPA中和中文写作有关的包，目的是为使用spacemacs进行中文写作的同学提供帮助，节省大家的时间。其中包含了以下和中文写作有关的包：
 
