@@ -74,7 +74,7 @@ git clone https://github.com/et2010/Chinese.git ~/.emacs.d/private/han
 
 Spacemacs默认的字体为“Source Code Pro”，默认字号为12. 为了实现中英文混排时字体的等宽，我将字号修改为14.（当然，这是试出来的。）
 ** 设置中文字体
-在.spacemacs中添加下面这段代码，用于设置中文字体。这里我用了"Adobe Song Std"，字号（高度）为16px，和可以替换为系统中已安装的任意字体。
+在.spacemacs中添加下面这段代码，用于设置中文字体。这里我用了"Adobe Song Std"，字号（高度）为16px，可以替换为系统中已安装的任意字体。
 
 #+BEGIN_SRC emacs-lisp :export yes
 (defun dotspacemacs/user-config ()
@@ -94,6 +94,7 @@ Spacemacs默认的字体为“Source Code Pro”，默认字号为12. 为了实�
   - Adobe Heiti Std
   - Adobe Kaiti Std
   - *Adobe Song Std*
+  - *Hiragino Sans GB W3*
   - *NSimSun*
   - WenQuanYi Micro Hei Mono
   - WenQuanYi Zen Hei Mono
