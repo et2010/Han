@@ -34,7 +34,7 @@
 安装非常简单，首先
 
 #+begin_src bash :export yes
-git clone https://github.com/et2010/Chinese.git ~/.emacs.d/private/han
+git clone https://github.com/et2010/Han.git ~/.emacs.d/private/
 #+end_src
 
 *注意：在没有官方Chinese layer之前，这个layer就叫Chinese，之后为了避免冲突，我将它改名为han。*

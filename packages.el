@@ -11,14 +11,14 @@
 ;;; License: GPLv3
 
 (setq han-packages
-  '(
-    ;; package hans go here
-    ace-pinyin
-    find-by-pinyin-dired
-    pangu-spacing
-    ;; pinyin-search
-    org
-    ))
+      '(
+        ;; package hans go here
+        ace-pinyin
+        find-by-pinyin-dired
+        pangu-spacing
+        ;; pinyin-search
+        org
+        ))
 
 (if han-enable-youdao-dict
     (push 'youdao-dictionary han-packages))
