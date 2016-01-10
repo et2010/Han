@@ -12,13 +12,16 @@
 
 (setq han-packages
       '(
-        ;; package hans go here
+        ;; pinyin-search
         ace-pinyin
         find-by-pinyin-dired
         pangu-spacing
-        ;; pinyin-search
+        visual-fill-column
         org
         ))
+
+;; List of packages to exclude.
+(setq gtd-excluded-packages '(adaptive-wrap))
 
 (if han-enable-youdao-dict
     (push 'youdao-dictionary han-packages))
@@ -26,6 +29,14 @@
 (if (eq han-default-input-method 'wubi)
     (push 'chinese-wbim han-packages)
   (push 'chinese-pyim han-packages))
+
+(if (and han-enable-fcitx (not (spacemacs/system-is-mswindows))) ;; disable in Windows
+    (push 'fcitx han-packages))
+
+(defun chinese/init-fcitx ()
+  (use-package fcitx
+    :init
+    (fcitx-evil-turn-on)))
 
 (defun han/init-chinese-wbim ()
   "Initialize chinese-wubi"
@@ -43,9 +54,6 @@
       (require 'chinese-wbim-extra)
       (global-set-key ";" 'chinese-wbim-insert-ascii)
       (setq default-input-method 'chinese-wubi))))
-
-;; For each package, define a function han/init-<package-han>
-;;
 
 (defun han/init-youdao-dictionary ()
   (use-package youdao-dictionary
@@ -72,17 +80,7 @@
             pyim-personal-file (concat spacemacs-cache-directory
                                        "pyim-personal.txt")
             default-input-method "chinese-pyim")
-      (evilify pyim-dicts-manager-mode pyim-dicts-manager-mode-map)
-      ;; switch to English input when helm buffer activate.
-      (setq pyim-english-input-switch-function
-            'pyim-helm-buffer-active-p))
-    ;; turn off evil escape when default input method (pyim) on.
-    ;; if not, the first key of escap sequence will cause a problem
-    ;; when trying to fast insert corresponding letter by hitting Enter.
-    ;; (add-hook 'input-method-activate-hook 'pyim-turn-off-evil-escape t)
-    ;; after input method deactivated, turn on evil escape.
-    ;; (add-hook 'input-method-deactivate-hook 'pyim-turn-on-evil-escape t)
-    ))
+      (evilified-state-evilify pyim-dicts-manager-mode pyim-dicts-manager-mode-map))))
 
 (defun han/init-find-by-pinyin-dired ()
   (use-package find-by-pinyin-dired
@@ -93,17 +91,20 @@
     :defer t
     :init
     (progn
+      (if han-enable-avy-pinyin
+          (setq ace-pinyin-use-avy t))
       (ace-pinyin-global-mode t)
       (spacemacs|hide-lighter ace-pinyin-mode))))
 
 (defun han/init-pangu-spacing ()
   (use-package pangu-spacing
     :defer t
-    :init (progn (global-pangu-spacing-mode 1)
+    :init (progn (global-pangu-spacing-mode -1)  ;; disable pangu-spacing by default
                  (spacemacs|hide-lighter pangu-spacing-mode)
                  ;; Always insert `real' space in org-mode.
                  (add-hook 'org-mode-hook
                            '(lambda ()
+                              ;; use soft space instead of hard space
                               (set (make-local-variable 'pangu-spacing-real-insert-separtor) nil))))))
 
 (defun han/post-init-org ()
@@ -119,9 +120,23 @@ unwanted space when exporting org-mode to html."
               "\\(" fix-regexp "\\) *\n *\\(" fix-regexp "\\)") "\\1\\2" origin-contents)))
       (ad-set-arg 1 fixed-contents))))
 
+(defun han/init-visual-fill-column ()
+  "Initialize visual-fill-column"
+  (use-package visual-fill-column
+    :defer t
+    :init
+    (add-hook 'visual-line-mode-hook 'visual-fill-column-mode)
+    ;; 最好将word-wrap的值设为nil，否则中英文混排时换行都发生在英文单词结束处，非常难看。
+    (add-hook 'visual-line-mode-hook
+              '(lambda ()
+                 (progn
+                   (set (make-local-variable 'word-wrap) nil)
+                 (set-fill-column 90))))))
+
 ;; (defun han/init-pinyin-search ()
 ;;   "Initialize pinyin-search"
 ;;   (use-package pinyin-search
+;;     :defer t
 ;;     :init
 ;;     (global-unset-key (kbd "C-s"))
 ;;     (global-unset-key (kbd "C-r"))
