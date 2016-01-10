@@ -32,7 +32,7 @@
 - youdao-dictionary :: 有道词典
 - visual-fill-column :: 处理中英文混排时的断句（visual fill）
 
-和Chinese layer的不同之处主要有两点：
+和Chinese layer的不同之处主要有三点：
 
 - pangu-spacing默认关闭，并且默认使用软空格
 - 加入visual-fill-column处理中英文混排时的visual-line断句（代替adaptive-wrap）
