@@ -28,9 +28,11 @@
 (defun spacemacs//set-monospaced-font (english chinese english-size chinese-size)
   (set-face-attribute 'default nil :font
                       (format   "%s:pixelsize=%d"  english english-size))
-  (dolist (charset '(kana han cjk-misc bopomofo))
-    (set-fontset-font (frame-parameter nil 'font) charset
-                      (font-spec :family chinese :size chinese-size))))
+  (set-fontset-font "fontset-default"
+                    ;; "CJK Unified Ideographs" (han) U+4E00 - U+9FFF
+                    (cons (decode-char 'ucs #x4e00)
+                          (decode-char 'ucs #x9fff))
+                    (format "-*-%s-*-*-*-*-%d-*-*-*-*-*-*-*" chinese chinese-size)))
 
 ;; If the Hiragino Sans GB font is not found in your system, you could call this
 ;; method in dotspacemacs/user-config function with a different Chinese font name.
