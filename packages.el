@@ -18,6 +18,8 @@
         pangu-spacing
         visual-fill-column
         org
+        evil-escape
+        ;; adaptive-wrap
         ))
 
 ;; List of packages to exclude.
@@ -101,11 +103,41 @@
     :defer t
     :init (progn (global-pangu-spacing-mode -1)  ;; disable pangu-spacing by default
                  (spacemacs|hide-lighter pangu-spacing-mode)
-                 ;; Always insert `real' space in org-mode.
                  (add-hook 'org-mode-hook
                            '(lambda ()
                               ;; use soft space instead of hard space
-                              (set (make-local-variable 'pangu-spacing-real-insert-separtor) nil))))))
+                              (setq-local pangu-spacing-real-insert-separtor nil))))))
+
+(defun han/init-visual-fill-column ()
+  "Initialize visual-fill-column"
+  (use-package visual-fill-column
+    :defer t
+    :init
+    (setq visual-fill-column-width 90)
+    (setq visual-line-mode-hook nil)
+    ;; Triggering visual-fill-column-mode when visual-line-mode is first turned on
+    (add-hook 'visual-line-mode-hook 'visual-fill-column-mode)
+    ;; 最好将当前buffer的word-wrap设为nil，否则中英文混排时换行都发生在英文单词结束处，非常难看。
+    (add-hook 'visual-line-mode-hook
+              '(lambda ()
+                 (when (bound-and-true-p word-wrap) (setq-local word-wrap nil))))
+    :config
+    ;; Replace the hook because...
+    (remove-hook 'visual-line-mode-hook 'visual-fill-column-mode)
+    ;; ...when visual-line-mode is turned off, visual-fill-column-mode
+    ;; isn't turned off as expected. This should fix it:
+    (add-hook 'visual-line-mode-hook (lambda ()
+                                       (if (bound-and-true-p visual-fill-column-mode)
+                                           (progn
+                                             (visual-fill-column-mode--disable)
+                                             (setq-local visual-fill-column-mode nil))
+                                         (visual-fill-column-mode--enable)
+                                         (setq-local visual-fill-column-mode t))) 'append)))
+
+;; (defun han/post-init-adaptive-wrap ()
+;;   (add-hook 'adaptive-wrap-prefix-mode-hook (lambda ()
+;;                                               (when (bound-and-true-p word-wrap)
+;;                                                 (setq-local word-wrap nil)))))
 
 (defun han/post-init-org ()
   (defadvice org-html-paragraph (before org-html-paragraph-advice
@@ -120,18 +152,13 @@ unwanted space when exporting org-mode to html."
               "\\(" fix-regexp "\\) *\n *\\(" fix-regexp "\\)") "\\1\\2" origin-contents)))
       (ad-set-arg 1 fixed-contents))))
 
-(defun han/init-visual-fill-column ()
-  "Initialize visual-fill-column"
-  (use-package visual-fill-column
-    :defer t
-    :init
-    (add-hook 'visual-line-mode-hook 'visual-fill-column-mode)
-    ;; 最好将word-wrap的值设为nil，否则中英文混排时换行都发生在英文单词结束处，非常难看。
-    (add-hook 'visual-line-mode-hook
-              '(lambda ()
-                 (progn
-                   (set (make-local-variable 'word-wrap) nil)
-                 (set-fill-column 90))))))
+(defun han/post-init-evil-escape ()
+  "Stop evil-escape from interrupting input from pyim, especially
+when you need to hit Enter while in pyim to fast input English"
+  (defun input-method-is-on-p ()
+    (bound-and-true-p current-input-method))
+  (setq evil-escape-inhibit-functions
+        (append '(input-method-is-on-p) evil-escape-inhibit-functions)))
 
 ;; (defun han/init-pinyin-search ()
 ;;   "Initialize pinyin-search"
