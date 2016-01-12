@@ -31,13 +31,13 @@
 - youdao-dictionary :: 有道词典
 - visual-fill-column :: 处理中英文混排时的断句（visual fill）
 
-和Chinese layer的主要不同之处有：
+*和Chinese layer的主要不同之处有：*
 
 - *采用了不同的函数设置中英文等宽（官方layer中的函数在Windows下有时候不管用，会调用fallback字体）*
 - *pangu-spacing默认关闭，并且默认使用软空格（以防止生成不需要的空格）*
 - *加入visual-fill-column，效果类似fill-column但是不会对buffer造成实际修改*
 - *额外定义了一些keybindings*
-- *修正了evil-escape和pyim之间对冲突*
+- *修正了evil-escape和pyim之间的冲突*
 
 * 安装
 安装非常简单，首先
