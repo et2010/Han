@@ -136,7 +136,11 @@ git clone https://github.com/et2010/Han.git ~/.emacs.d/private/han
 #+END_SRC
 | key       | function                           | state  |
 |-----------+------------------------------------+--------|
-| ~SPC d~   | ace-pinyin-dwim                    | normal |
+| ~F6~      | avy-goto-char                      | global |
+| ~F7~      | avy-goto-char-2                    | global |
+| ~M-z~     | avy-zap-to-char-dwim               | global |
+| ~M-Z~     | avy-zap-up-to-char-dwim            | global |
+| ~SPC d~   | avy-goto-char-in-line              | normal |
 | ~SPC o d~ | find-by-pinyin-dired               | normal |
 | ~SPC o y~ | youdao-dictionary-search-at-point+ | normal |
 | ~C-SPC~   | toggle-input-method                | hybrid |

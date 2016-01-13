@@ -14,6 +14,7 @@
       '(
         ;; pinyin-search
         ace-pinyin
+        avy-zap
         find-by-pinyin-dired
         pangu-spacing
         visual-fill-column
@@ -35,10 +36,18 @@
 (if (and han-enable-fcitx (not (spacemacs/system-is-mswindows))) ;; disable in Windows
     (push 'fcitx han-packages))
 
-(defun chinese/init-fcitx ()
+(defun han/init-fcitx ()
   (use-package fcitx
     :init
     (fcitx-evil-turn-on)))
+
+(defun han/init-avy-zap ()
+  (use-package avy-zap
+    :defer t
+    :init
+    (setq avy-zap-dwim-prefer-avy t)
+    (global-set-key (kbd "M-z") 'avy-zap-to-char-dwim)
+    (global-set-key (kbd "M-Z") 'avy-zap-up-to-char-dwim)))
 
 (defun han/init-chinese-wbim ()
   "Initialize chinese-wubi"
