@@ -85,7 +85,7 @@
     :if (eq 'pinyin han-default-input-method)
     :init
     (progn
-      (setq pyim-use-tooltip nil
+      (setq pyim-use-tooltip 'popup
             ;; pyim-enable-words-predict nil
             pyim-dicts-directory spacemacs-cache-directory
             pyim-personal-file (concat spacemacs-cache-directory
