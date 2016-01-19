@@ -123,13 +123,7 @@ git clone https://github.com/et2010/Han.git ~/.emacs.d/private/han
 3. 不同系统中显示的字体族名不同，比如Adobe宋体，在Linux中显示为"Adobe Song Std", 在Windows中显示为"Adobe 宋体 Std L". 以上字体是在不同操作系统中试验得到的， *具体使用时以你的操作系统中所显示的字体族名为准。*
 * TODO 中英文混排时的line wrap
 
-* TODO Keybindings
-可以在你的.spacemacs文件中添加以下设置：
-#+BEGIN_SRC emacs-lisp :export yes
-(defun dotspacemacs/user-config ()
-  (define-key evil-hybrid-state-map (kbd "M-f") 'pyim-forward-word)
-  (define-key evil-hybrid-state-map (kbd "M-b") 'pyim-backward-word))
-#+END_SRC
+* Keybindings
 | key       | function                           | state  |
 |-----------+------------------------------------+--------|
 | ~F6~      | avy-goto-char                      | global |

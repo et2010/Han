@@ -11,8 +11,7 @@
 ;;; License: GPLv3
 
 (setq han-packages
-      '(pinyin-search
-        ace-pinyin
+      '(ace-pinyin
         avy-zap
         find-by-pinyin-dired
         pangu-spacing
@@ -86,7 +85,19 @@
             pyim-dicts-directory spacemacs-cache-directory
             pyim-personal-file (concat spacemacs-cache-directory
                                        "pyim-personal.txt")
-            default-input-method "chinese-pyim")
+            default-input-method "chinese-pyim"
+            pyim-isearch-enable-pinyin-search t
+            isearch-search-fun-function 'pyim-isearch-pinyin-search-function
+            pyim-english-input-switch-function '(pyim-probe-isearch-mode
+                                                 pyim-probe-org-speed-commands
+                                                 pyim-probe-org-structure-template
+                                                 pyim-probe-dynamic-english
+                                                 pyim-probe-program-mode
+                                                 ;; pyim-probe-punctuation-after-punctuation
+                                                 ;; pyim-probe-punctuation-line-beginning
+                                                 ))
+      (define-key evil-hybrid-state-map (kbd "M-f") 'pyim-forward-word)
+      (define-key evil-hybrid-state-map (kbd "M-b") 'pyim-backward-word)
       (evilified-state-evilify pyim-dicts-manager-mode pyim-dicts-manager-mode-map))))
 
 (defun han/init-find-by-pinyin-dired ()
@@ -142,15 +153,6 @@
                                                (setq-local visual-fill-column-mode nil))
                                            (visual-fill-column-mode--enable)
                                            (setq-local visual-fill-column-mode t))) 'append))))
-
-(defun han/init-pinyin-search ()
-  "Initialize pinyin-search"
-  (use-package pinyin-search
-    :defer t
-    :init
-    (progn
-      (global-set-key (kbd "C-c C-s") 'isearch-forward-pinyin)
-      (global-set-key (kbd "C-c C-r") 'isearch-backward-pinyin))))
 
 (defun han/post-init-org ()
   (defadvice org-html-paragraph (before org-html-paragraph-advice
