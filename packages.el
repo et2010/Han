@@ -149,9 +149,8 @@
     :defer t
     :init
     (progn
-      (spacemacs/set-leader-keys
-        "os" 'isearch-forward-pinyin
-        "or" 'isearch-backward-pinyin))))
+      (global-set-key (kbd "C-c C-s") 'isearch-forward-pinyin)
+      (global-set-key (kbd "C-c C-r") 'isearch-backward-pinyin))))
 
 (defun han/post-init-org ()
   (defadvice org-html-paragraph (before org-html-paragraph-advice

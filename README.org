@@ -127,12 +127,8 @@ git clone https://github.com/et2010/Han.git ~/.emacs.d/private/han
 可以在你的.spacemacs文件中添加以下设置：
 #+BEGIN_SRC emacs-lisp :export yes
 (defun dotspacemacs/user-config ()
-  (define-key evil-hybrid-state-map (kbd "C-SPC") 'toggle-input-method)
   (define-key evil-hybrid-state-map (kbd "M-f") 'pyim-forward-word)
-  (define-key evil-hybrid-state-map (kbd "M-b") 'pyim-backward-word)
-  (define-key evil-hybrid-state-map (kbd "C-s") 'isearch-forward-pinyin)
-  (define-key evil-hybrid-state-map (kbd "C-r") 'isearch-backward-pinyin)
-  )
+  (define-key evil-hybrid-state-map (kbd "M-b") 'pyim-backward-word))
 #+END_SRC
 | key       | function                           | state  |
 |-----------+------------------------------------+--------|
@@ -140,11 +136,11 @@ git clone https://github.com/et2010/Han.git ~/.emacs.d/private/han
 | ~F7~      | avy-goto-char-2                    | global |
 | ~M-z~     | avy-zap-to-char-dwim               | global |
 | ~M-Z~     | avy-zap-up-to-char-dwim            | global |
+| ~C-c C-s~ | isearch-forward-pinyin             | global |
+| ~C-c C-r~ | isearch-backward-pinyin            | global |
 | ~SPC d~   | avy-goto-char-in-line              | normal |
 | ~SPC o d~ | find-by-pinyin-dired               | normal |
 | ~SPC o y~ | youdao-dictionary-search-at-point+ | normal |
 | ~C-SPC~   | toggle-input-method                | hybrid |
 | ~M-f~     | pyim-forward-word                  | hybrid |
 | ~M-b~     | pyim-backward-word                 | hybrid |
-| ~C-s~     | isearch-forward-pinyin             | hybrid |
-| ~C-r~     | isearch-backward-pinyin            | hybrid |
