@@ -87,15 +87,14 @@
                                        "pyim-personal.txt")
             default-input-method "chinese-pyim"
             pyim-isearch-enable-pinyin-search t
-            isearch-search-fun-function 'pyim-isearch-pinyin-search-function
-            pyim-english-input-switch-function '(pyim-probe-isearch-mode
-                                                 pyim-probe-org-speed-commands
-                                                 pyim-probe-org-structure-template
-                                                 pyim-probe-dynamic-english
-                                                 pyim-probe-program-mode
-                                                 ;; pyim-probe-punctuation-after-punctuation
-                                                 ;; pyim-probe-punctuation-line-beginning
-                                                 ))
+            isearch-search-fun-function 'pyim-isearch-pinyin-search-function)
+      (setq-default pyim-english-input-switch-functions '(pyim-probe-isearch-mode
+                                                          pyim-probe-org-speed-commands
+                                                          pyim-probe-org-structure-template
+                                                          pyim-probe-dynamic-english
+                                                          pyim-probe-program-mode)
+                    pyim-punctuation-half-width-functions '(pyim-probe-punctuation-after-punctuation
+                                                            pyim-probe-punctuation-line-beginning))
       (define-key evil-hybrid-state-map (kbd "M-f") 'pyim-forward-word)
       (define-key evil-hybrid-state-map (kbd "M-b") 'pyim-backward-word)
       (evilified-state-evilify pyim-dicts-manager-mode pyim-dicts-manager-mode-map))))
