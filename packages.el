@@ -91,7 +91,7 @@
       (setq-default pyim-english-input-switch-functions '(pyim-probe-isearch-mode
                                                           pyim-probe-org-speed-commands
                                                           pyim-probe-org-structure-template
-                                                          pyim-probe-dynamic-english
+                                                          ;; pyim-probe-dynamic-english
                                                           pyim-probe-program-mode)
                     pyim-punctuation-half-width-functions '(pyim-probe-punctuation-after-punctuation
                                                             pyim-probe-punctuation-line-beginning))
