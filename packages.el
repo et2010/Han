@@ -124,12 +124,12 @@
     :defer t
     :init
     (progn
-      (global-pangu-spacing-mode -1)  ;; disable pangu-spacing by default
+      (global-pangu-spacing-mode 1)  ;; enable pangu-spacing by default
       (spacemacs|hide-lighter pangu-spacing-mode)
       (add-hook 'org-mode-hook
                 '(lambda ()
                    ;; use soft space instead of hard space
-                   (setq-local pangu-spacing-real-insert-separtor nil))))))
+                   (setq-local pangu-spacing-real-insert-separtor t))))))
 
 (defun han/init-visual-fill-column ()
   "Initialize visual-fill-column"
