@@ -153,6 +153,24 @@
                                            (visual-fill-column-mode--enable)
                                            (setq-local visual-fill-column-mode t))) 'append))))
 
+(defun han/pre-init-org ()
+  (spacemacs|use-package-add-hook org
+    :post-init
+    (progn
+      (add-hook 'org-mode-hook 'variable-pitch-mode)
+
+      (eval-after-load "org"
+        '(mapc
+          (lambda (face)
+            (set-face-attribute
+             face nil
+             :inherit
+             (han-adjoin-to-list-or-symbol
+              'fixed-pitch
+              (face-attribute face :inherit))))
+          (list 'org-code 'org-block 'org-table 'org-meta-line 'org-block-begin-line 'org-block-end-line)))
+      )))
+
 (defun han/post-init-org ()
   (defadvice org-html-paragraph (before org-html-paragraph-advice
                                         (paragraph contents info) activate)

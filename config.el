@@ -24,10 +24,21 @@
 (defvar han-enable-fcitx nil
   "Enable fcitx to help writing Chinese in Evil mode.")
 
+(defun han-adjoin-to-list-or-symbol (element list-or-symbol)
+  (let ((list (if (not (listp list-or-symbol))
+                  (list list-or-symbol)
+                list-or-symbol)))
+    ;; (require 'cl-lib)
+    (cl-adjoin element list)))
+
 ;; Set the monospaced font size when mixed Chinese and English words
 (defun spacemacs//set-monospaced-font (english chinese english-size chinese-size)
   (set-face-attribute 'default nil :font
                       (format   "%s:pixelsize=%d"  english english-size))
+  (set-face-attribute 'fixed-pitch nil :font
+                      (format   "%s:pixelsize=%d"  english english-size))
+  (set-face-attribute 'variable-pitch nil :font
+                      (format   "%s:pixelsize=%d"  "DejaVu Sans Condensed" 14))
   (dolist (charset '(kana han cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font) charset
                       (format "-*-%s-*-*-*-*-%d-*-*-*-*-*-*-*" chinese chinese-size))))
