@@ -80,7 +80,13 @@
     :if (eq 'pinyin han-default-input-method)
     :init
     (progn
-      (setq pyim-use-tooltip 'popup
+      ;; (eval-after-load "company"
+      ;;   '(progn
+      ;;      (require 'chinese-pyim-company)
+      ;;      (setq pyim-company-max-length 6))
+      ;;   )
+      (setq pyim-company-complete-chinese-enable nil
+            pyim-use-tooltip 'popup
             ;; pyim-enable-words-predict nil
             pyim-dicts-directory spacemacs-cache-directory
             pyim-personal-file (concat spacemacs-cache-directory
