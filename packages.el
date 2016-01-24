@@ -129,7 +129,7 @@
       (spacemacs|hide-lighter pangu-spacing-mode)
       (add-hook 'org-mode-hook
                 '(lambda ()
-                   ;; use soft space instead of hard space
+                   ;; use hard space instead of soft space
                    (setq-local pangu-spacing-real-insert-separtor t))))))
 
 (defun han/init-visual-fill-column ()
