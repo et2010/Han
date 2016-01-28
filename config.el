@@ -38,7 +38,7 @@
   (set-face-attribute 'fixed-pitch nil :font
                       (format   "%s:pixelsize=%d"  english english-size))
   (set-face-attribute 'variable-pitch nil :font
-                      (format   "%s:pixelsize=%d"  "DejaVu Sans Condensed" 14))
+                      (format   "%s:pixelsize=%d"  "DejaVu Sans Condensed" english-size))
   (dolist (charset '(kana han cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font) charset
                       (format "-*-%s-*-*-*-*-%d-*-*-*-*-*-*-*" chinese chinese-size))))

@@ -165,7 +165,6 @@
     :post-init
     (progn
       (add-hook 'org-mode-hook 'variable-pitch-mode)
-
       (eval-after-load "org"
         '(mapc
           (lambda (face)
@@ -175,7 +174,63 @@
              (han-adjoin-to-list-or-symbol
               'fixed-pitch
               (face-attribute face :inherit))))
-          (list 'org-code 'org-block 'org-table 'org-meta-line 'org-block-begin-line 'org-block-end-line)))
+          (list 'org-code
+                'org-block
+                'org-table
+                'org-meta-line
+                'org-block-begin-line
+                'org-block-end-line
+                'font-lock-warning-face
+                'font-lock-function-name-face
+                'font-lock-variable-name-face
+                'font-lock-keyword-face
+                'font-lock-comment-face
+                'font-lock-comment-delimiter-face
+                'font-lock-type-face
+                'font-lock-constant-face
+                'font-lock-builtin-face
+                'font-lock-preprocessor-face
+                'font-lock-string-face
+                'font-lock-doc-face
+                'font-lock-negation-char-face)))
+
+      ;; Modified org function for src block fontification, use fixed-pitch
+      ;; instead of default face.
+      (eval-after-load "org-src"
+        '(defun org-src-font-lock-fontify-block (lang start end)
+           "Fontify code block.
+This function is called by emacs automatic fontification, as long
+as `org-src-fontify-natively' is non-nil."
+           (let ((lang-mode (org-src--get-lang-mode lang)))
+             (when (fboundp lang-mode)
+               (let ((string (buffer-substring-no-properties start end))
+                     (modified (buffer-modified-p))
+                     (org-buffer (current-buffer)) pos next)
+                 (remove-text-properties start end '(face nil))
+                 (with-current-buffer
+                     (get-buffer-create
+                      (concat " org-src-fontification:" (symbol-name lang-mode)))
+                   (delete-region (point-min) (point-max))
+                   (insert string " ") ;; so there's a final property change
+                   (unless (eq major-mode lang-mode) (funcall lang-mode))
+                   ;; Avoid `font-lock-ensure', which does not display fonts in
+                   ;; source block.
+                   (font-lock-fontify-buffer)
+                   (setq pos (point-min))
+                   (while (setq next (next-single-property-change pos 'face))
+                     (put-text-property
+                      (+ start (1- pos)) (1- (+ start next)) 'face
+                      ;; This is the modified part. If face property is nil, set
+                      ;; it to fixed-pitch.
+                      (if (get-text-property pos 'face)
+                          (get-text-property pos 'face)
+                        'fixed-pitch)
+                      org-buffer)
+                     (setq pos next)))
+                 (add-text-properties
+                  start end
+                  '(font-lock-fontified t fontified t font-lock-multiline t))
+                 (set-buffer-modified-p modified))))))
       )))
 
 (defun han/post-init-org ()
