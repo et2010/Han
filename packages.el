@@ -81,18 +81,20 @@
     :init
     (progn
       (setq default-input-method "chinese-pyim")
-      (setq pyim-use-tooltip 'popup)
+      (setq pyim-use-tooltip 'pos-tip)
       ;; (setq pyim-enable-words-predict nil)
       (setq pyim-dicts-directory (concat user-emacs-directory "private/han")
             pyim-personal-file (concat spacemacs-cache-directory "pyim-personal.txt")
             pyim-dicts
             '((:name "sogou" :file "~/.emacs.d/private/han/pyim-sgcore.pyim" :coding utf-8-unix :dict-type pinyin-dict)))
-      (setq pyim-company-complete-chinese-enable nil)
-      ;; (eval-after-load "company"
-      ;;   '(progn
-      ;;      (require 'chinese-pyim-company)
-      ;;      (setq pyim-company-max-length 6))
-      ;;   )
+      (eval-after-load "company"
+        '(progn
+           (require 'chinese-pyim-company)
+           ;; uncomment following line if you wanna enable company
+           ;; (setq pyim-company-max-length 6)
+           ;; comment out following line if you wanna enable company
+           (setq pyim-company-complete-chinese-enable nil)
+           ))
       (setq pyim-isearch-enable-pinyin-search t
             isearch-search-fun-function 'pyim-isearch-pinyin-search-function)
       (setq-default pyim-english-input-switch-functions '(pyim-probe-isearch-mode
@@ -104,7 +106,8 @@
                                                             pyim-probe-punctuation-line-beginning))
       (define-key evil-hybrid-state-map (kbd "M-f") 'pyim-forward-word)
       (define-key evil-hybrid-state-map (kbd "M-b") 'pyim-backward-word)
-      (evilified-state-evilify pyim-dicts-manager-mode pyim-dicts-manager-mode-map))))
+      (evilified-state-evilify pyim-dicts-manager-mode pyim-dicts-manager-mode-map))
+    ))
 
 (defun han/init-find-by-pinyin-dired ()
   (use-package find-by-pinyin-dired
