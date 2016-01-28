@@ -9,119 +9,85 @@
 #+LANGUAGE: en
 #+SELECT_TAGS: export
 #+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 24.5.1 (Org mode 8.3.2)
+#+CREATOR: Emacs 24.5.1 (Org mode 8.3.3)
 
 * 目录                                                                 :TOC:
  - [[#特点][特点]]
  - [[#安装][安装]]
- - [[#设置中英文等宽字体][设置中英文等宽字体]]
-   - [[#设置：][设置：]]
-   - [[#说明][说明]]
- - [[#中英文混排时的line-wrap][中英文混排时的line wrap]]
+ - [[#关于字体][关于字体]]
+   - [[#设置][设置]]
+   - [[#最好的中文字体][最好的中文字体]]
+   - [[#英文变宽字体][英文变宽字体]]
+ - [[#关于-visual-fill-column][关于 visual-fill-column]]
  - [[#keybindings][Keybindings]]
 
 * 特点
-这个private layer作为spacemacs官方[[https://github.com/syl20bnr/spacemacs/tree/master/layers/chinese][Chinese layer]]的一个替代， *大部份设置都与Chinese layer相同，在它的基础上做了少量修改。* 之所以另外开一个layer，主要是因为官方的layer还不能完全满足我个人的需要。本设置层整合了ELPA中和中文写作有关的包，目的是为使用spacemacs进行中文写作的同学提供帮助，节省大家的时间。其中包含了以下和中文写作有关的包：
+这个 private layer 作为 spacemacs 官方[[https://github.com/syl20bnr/spacemacs/tree/master/layers/chinese][Chinese layer]]的一个替代， 对 Chinese layer 做了很多改进。主要包含以下 packages：
 
-- ace-pinyin :: 根据汉字的拼音首字母进行ace-jump。
-- chinese-pyim :: 目前最好用的emacs拼音输入法。
-- find-by-pinyin-dired :: 根据拼音首字母找到并打开文件。
-- pangu-spacing :: 以“软空格”的形式在中英混排文档中自动增加汉字与英文单词的间距。
-- pinyin-search :: 顾名思义，根据汉字拼音首字母进行查找。(not activated by default)
-- youdao-dictionary :: 有道词典
-- visual-fill-column :: 处理中英文混排时的断句（visual fill）
+- ace-pinyin :: 根据拼音跳转到任意位置。
+- avy-zap :: 和 ace-pinyin 同一个作者写的，配合 ace-pinyin 使用，利用拼音进行 zap。
+- chinese-pyim :: 目前最好用的 emacs 拼音输入法。提供了对中文分词以及拼音查找的支持。
+- find-by-pinyin-dired :: 打开文件名为中文的文件。
+- pangu-spacing :: 自动在中英混排文档的中文和英文之间添加空格。
+- youdao-dictionary :: 有道词典。（可选）
+- visual-fill-column :: 用于在 org-mode 中添加 visual fill 功能。
 
-*和Chinese layer的主要不同之处有：*
+除此之外，这个 layer 还包含以下自定义设置：
 
-- *采用了不同的函数设置中英文等宽（官方layer中的函数在Windows下有时候不管用，会调用fallback字体）*
-- *pangu-spacing默认关闭，并且默认使用软空格（以防止生成不需要的空格）*
-- *加入visual-fill-column，效果类似fill-column但是不会对buffer造成实际修改*
-- *额外定义了一些keybindings*
-- *修正了evil-escape和pyim之间的冲突*
+- 在 org-mode 中除了 table 以及 block 等范围外使用 variable-pitch（变宽字体）。
+- 修正了 pyim 英文回车上屏和 evil-escape 之间的冲突。
+- 包含了一个自制的 pyim 词库文件（pyim-sgcore.pyim）。
 
 * 安装
-安装非常简单，首先
+用下列命令安装：
 
 #+begin_src bash :export yes
-git clone https://github.com/et2010/Han.git ~/.emacs.d/private/han
+  git clone https://github.com/et2010/Han.git ~/.emacs.d/private/han
 #+end_src
 
-*注意：在没有官方Chinese layer之前，这个layer就叫Chinese，之后为了避免冲突，我将它改名为han。*
+注意路径的大小写。
 
-然后在你的.spacemacs文件中添加han设置层。配置类型推荐选择hybrid：
+然后在你的.spacemacs 文件中添加 han 设置层。编辑风格推荐 hybrid：
 
 #+begin_src emacs-lisp :export yes
-(defun dotspacemacs/layers ()
-  (setq-default
-   dotspacemacs-configuration-layers
-   '(
-     (han :variables
-          han-enable-youdao-dict t)
-     ))
-  )
+  (defun dotspacemacs/layers ()
+    (setq-default
+     dotspacemacs-configuration-layers
+     '(
+       (han :variables
+            han-enable-youdao-dict t)
+       )
+    ))
 
-(defun dotspacemacs/init ()
-  (setq-default
-   dotspacemacs-editing-style 'hybrid)
-  )
+  (defun dotspacemacs/init ()
+    (setq-default
+     dotspacemacs-editing-style 'hybrid)
+    )
 #+end_src
 
-* 设置中英文等宽字体
-** 设置：
+另外，auto-complete layer 在 orgmode 中会引发很多问题，可以用以下方式在 org 中禁用 company 补全：
+
+#+BEGIN_SRC emacs-lisp :export yes
+  ;; 在变量 dotspacemacs-configuration-layers 中：
+  (auto-completion :disabled-for org git)
+#+END_SRC
+
+* 关于字体
+** 设置
 在 =.spacemacs= 文件中添加以下设置：
 #+BEGIN_SRC emacs-lisp :export yes
   (defun dotspacemacs/user-config ()
-    (spacemacs//set-monospaced-font "Source Code Pro" "Hiragino Sans GB W3" 14 16))
+    (spacemacs//set-monospaced-font "Source Code Pro" "BabelStone Han" 14 16))
 #+END_SRC
-** 说明
-当使用GUI的emacs时，默认的中文字符宽度一般不等于英文字符宽度的两倍，这样会导致用字符画的表格非常丑。解决办法是分别采用不同字号（高度）的中英文字体，使中文字符的宽度刚好等于英文字符宽度的两倍。通过试验发现不少常用的英文等宽字体字号设为14，中文字号设为16时可以满足等宽要求。字号这样配置时，以下列出的中英字体任意组合都可以满足等宽：
 
-- 中文字体
-  - *Adobe Fangsong Std*
-  - Adobe Heiti Std
-  - Adobe Kaiti Std
-  - *Adobe Song Std*
-  - *Hiragino Sans GB W3*
-  - *NSimSun*
-  - WenQuanYi Micro Hei Mono
-  - WenQuanYi Zen Hei Mono
-  - *微软雅黑*
+** 最好的中文字体
+=BabelStone Han= 是最好的中文字体，因为它包含超大的 unicode 字符集，可以显示 Ext. A~E 的扩展汉字，日文平假名，以及注音符号等。链接：http://www.babelstone.co.uk/Fonts/Han.html
 
-- 英文字体（14号)
-  - *Anonymous Pro*
-  - *Bitstream Vera Sans Mono*
-  - BPmono
-  - *Consolas*
-  - Courier 10 Pitch
-  - /Courier New/
-  - Cousine
-  - *DejaVu Sans Mono*
-  - Droid Sans Mono
-  - *Envy Code R*
-  - /FreeMono/
-  - Liberation Mono
-  - *Monaco*
-  - MonospaceTypewriter
-  - /Nimbus Mono L/
-  - NotCourierSans
-  - *Oxygen Mono*
-  - *Source Code Pro*
-  - /TlwgMono/
+** 英文变宽字体
+Han layer 对 orgmode 字体的处理：除了 table，block 等场合使用 fixed-pitch face 外，其它场合使用 variable-pitch。这就产生了一个变宽字体选择的问题。han layer 默认使用 =DejaVu Sans= 字体作为变宽字体。在不做修改的情况下必须先下载安装这一字体才能正常使用。 =DejaVu Sans= 包含比较全的 unicode 符号，是最佳英文变宽字体。链接：http://dejavu-fonts.org/wiki/Main_Page
 
-- 英文字体（16号）
-  - Audimat Mono
-  - *Inconsolata*
-  - monofur
-  - *Ubuntu Mono*
-
-- 英文字体（12号）
-  - /Linux Libertine Mono O/
-
-注意：
-1. *加粗字体* 为推荐使用字体， /斜体/ 为英文衬线字体。
-2. 中文的16号字体可以与英文的16,14,12号字体实现等宽；大部分可以实现与中文16号字体等宽的英文等宽字体都是14号。（不推荐使用英文12号字体，即Linux Libertine Mono O，因为与中文字体高度相差太大）。
-3. 不同系统中显示的字体族名不同，比如Adobe宋体，在Linux中显示为"Adobe Song Std", 在Windows中显示为"Adobe 宋体 Std L". 以上字体是在不同操作系统中试验得到的， *具体使用时以你的操作系统中所显示的字体族名为准。*
-* TODO 中英文混排时的line wrap
+* 关于 visual-fill-column
+用 =SPC t L= 设置 ~visual-line~ 的开启/关闭，同时会自动启动/关闭 ~visual-fill-column~.
 
 * Keybindings
 | key       | function                           | state  |
