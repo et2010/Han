@@ -25,7 +25,7 @@
 这个 private layer 作为 spacemacs 官方[[https://github.com/syl20bnr/spacemacs/tree/master/layers/chinese][Chinese layer]]的一个替代， 对 Chinese layer 做了很多改进。主要包含以下 packages：
 
 - ace-pinyin :: 根据拼音跳转到任意位置。
-- avy-zap :: 和 ace-pinyin 同一个作者写的，配合 ace-pinyin 使用，利用拼音进行 zap。
+- avy-zap :: ace-pinyin 的作者写的，配合 ace-pinyin 使用。类似 emacs 的 zap，不同点是增加了对 avy 跳转和汉字拼音的支持。
 - chinese-pyim :: 目前最好用的 emacs 拼音输入法。提供了对中文分词以及拼音查找的支持。
 - find-by-pinyin-dired :: 打开文件名为中文的文件。
 - pangu-spacing :: 自动在中英混排文档的中文和英文之间添加空格。
@@ -34,7 +34,7 @@
 
 除此之外，这个 layer 还包含以下自定义设置：
 
-- 在 org-mode 中除了 table 以及 block 等范围外使用 variable-pitch（变宽字体）。
+- 在 org-mode 中除了 table 以及 block 等之外使用 variable-pitch（变宽字体）。
 - 修正了 pyim 英文回车上屏和 evil-escape 之间的冲突。
 - 包含了一个自制的 pyim 词库文件（pyim-sgcore.pyim）。
 
@@ -47,7 +47,7 @@
 
 注意路径的大小写。
 
-然后在你的.spacemacs 文件中添加 han 设置层。编辑风格推荐 hybrid：
+然后在你的.spacemacs 文件中添加 han layer。编辑风格推荐 hybrid：
 
 #+begin_src emacs-lisp :export yes
   (defun dotspacemacs/layers ()
@@ -69,7 +69,7 @@
 
 #+BEGIN_SRC emacs-lisp :export yes
   ;; 在变量 dotspacemacs-configuration-layers 中：
-  (auto-completion :disabled-for org git)
+  (auto-completion :disabled-for org)
 #+END_SRC
 
 * 关于字体
@@ -96,8 +96,6 @@ Han layer 对 orgmode 字体的处理：除了 table，block 等场合使用 fix
 | ~F7~      | avy-goto-char-2                    | global |
 | ~M-z~     | avy-zap-to-char-dwim               | global |
 | ~M-Z~     | avy-zap-up-to-char-dwim            | global |
-| ~C-c C-s~ | isearch-forward-pinyin             | global |
-| ~C-c C-r~ | isearch-backward-pinyin            | global |
 | ~SPC d~   | avy-goto-char-in-line              | normal |
 | ~SPC o d~ | find-by-pinyin-dired               | normal |
 | ~SPC o y~ | youdao-dictionary-search-at-point+ | normal |
