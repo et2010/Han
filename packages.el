@@ -30,11 +30,14 @@
   (push 'chinese-pyim han-packages))
 
 (if (and han-enable-fcitx (not (spacemacs/system-is-mswindows))) ;; disable in Windows
-    (push 'fcitx han-packages))
+    (push '(fcitx :location (recipe :fetcher github :repo "et2010/fcitx.el")) han-packages))
 
 (defun han/init-fcitx ()
   (use-package fcitx
-    :init (fcitx-evil-turn-on)))
+    :init
+    (progn
+      (setq fcitx-use-dbus t)
+      (fcitx-aggressive-setup))))
 
 (defun han/init-avy-zap ()
   (use-package avy-zap
