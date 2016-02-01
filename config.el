@@ -24,6 +24,9 @@
 (defvar han-enable-fcitx nil
   "Enable fcitx to help writing Chinese in Evil mode.")
 
+(defvar han-org-line-spacing 0.0
+  "Extra line spacing in org mode, its value should be a float number")
+
 (defun han-adjoin-to-list-or-symbol (element list-or-symbol)
   (let ((list (if (not (listp list-or-symbol))
                   (list list-or-symbol)

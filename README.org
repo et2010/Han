@@ -23,6 +23,7 @@
  - [[#关于-org-文档的“版式”][关于 org 文档的“版式”]]
    - [[#自动填充][自动填充]]
    - [[#等宽和变宽字体][等宽和变宽字体]]
+   - [[#行距调整][行距调整]]
  - [[#keybindings][Keybindings]]
 
 * 特点
@@ -63,7 +64,8 @@
        (han :variables
             han-enable-youdao-dict t
             ; 在 Linux 下如果希望使用 fcitx 输入法，可以加入下面一行
-            han-enable-fcitx t)
+            han-enable-fcitx t
+            han-org-line-spacing 0.2)
        )
     ))
 
@@ -103,6 +105,8 @@ Org 文档都是纯文本，但是在 org-mode 中显示时会有各种语法高
 用 =SPC t L= 设置 ~visual-line~ 的开启/关闭，同时会自动启动/关闭 ~visual-fill-column~.
 ** 等宽和变宽字体
 除了 table 和 block 等之外的地方一律使用变宽字体，这样可以使版面更加紧凑。但是这个功能在 emacsclient 中无效，另外没有在 console emacs 中测试过。
+** 行距调整
+行距可以通过改变变量 han-org-line-spacing 的值来调整，默认值为 0.0，即不做调整。设为 0.2 可以 *增加* 0.2 倍行距。
 
 * Keybindings
 | key       | function                           | state  |
