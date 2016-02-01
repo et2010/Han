@@ -101,6 +101,9 @@ Han layer 对 orgmode 字体的处理：除了 table，block 等场合使用 fix
 
 * 关于 org 文档的“版式”
 Org 文档都是纯文本，但是在 org-mode 中显示时会有各种语法高亮以及对齐等，效果并不亚于 YGWYS 的 MS Word. 于是这里借用一下 doc 文档的术语“版式”。
+
+[[./img/demo.png]]
+
 ** 自动填充
 用 =SPC t L= 设置 ~visual-line~ 的开启/关闭，同时会自动启动/关闭 ~visual-fill-column~.
 ** 等宽和变宽字体
