@@ -17,8 +17,12 @@
  - [[#关于字体][关于字体]]
    - [[#设置][设置]]
    - [[#最好的中文字体][最好的中文字体]]
+     - [[#ming][Ming]]
+     - [[#sans-serif][Sans Serif]]
    - [[#英文变宽字体][英文变宽字体]]
- - [[#关于-visual-fill-column][关于 visual-fill-column]]
+ - [[#关于-org-文档的“版式”][关于 org 文档的“版式”]]
+     - [[#自动填充][自动填充]]
+     - [[#等宽和变宽字体][等宽和变宽字体]]
  - [[#keybindings][Keybindings]]
 
 * 特点
@@ -27,6 +31,7 @@
 - ace-pinyin :: 根据拼音跳转到任意位置。
 - avy-zap :: ace-pinyin 的作者写的，配合 ace-pinyin 使用。类似 emacs 的 zap，不同点是增加了对 avy 跳转和汉字拼音的支持。
 - chinese-pyim :: 目前最好用的 emacs 拼音输入法。提供了对中文分词以及拼音查找的支持。
+- fcitx.el :: 控制 Linux 下中文输入法 fcitx 的调用。
 - find-by-pinyin-dired :: 打开文件名为中文的文件。
 - pangu-spacing :: 自动在中英混排文档的中文和英文之间添加空格。
 - youdao-dictionary :: 有道词典。（可选）
@@ -37,6 +42,7 @@
 - 在 org-mode 中除了 table 以及 block 等之外使用 variable-pitch（变宽字体）。
 - 修正了 pyim 英文回车上屏和 evil-escape 之间的冲突。
 - 包含了一个自制的 pyim 词库文件（pyim-sgcore.pyim）。
+- 使用修改的 fcitx.el，支持 hybrid state.
 
 * 安装
 用下列命令安装：
@@ -47,7 +53,7 @@
 
 注意路径的大小写。
 
-然后在你的.spacemacs 文件中添加 han layer。编辑风格推荐 hybrid：
+然后在你的.spacemacs 文件中添加 han layer。编辑风格使用 hybrid：
 
 #+begin_src emacs-lisp :export yes
   (defun dotspacemacs/layers ()
@@ -55,7 +61,9 @@
      dotspacemacs-configuration-layers
      '(
        (han :variables
-            han-enable-youdao-dict t)
+            han-enable-youdao-dict t
+            ; 在 Linux 下如果希望使用 fcitx 输入法，可以加入下面一行
+            han-enable-fcitx t)
        )
     ))
 
@@ -81,13 +89,20 @@
 #+END_SRC
 
 ** 最好的中文字体
-=BabelStone Han= 是最好的中文字体，因为它包含超大的 unicode 字符集，可以显示 Ext. A~E 的扩展汉字，日文平假名，以及注音符号等。链接：http://www.babelstone.co.uk/Fonts/Han.html
+*** Ming
+这类字体中，BabelStone Han 是最好的选择，因为它包含超大的 unicode 字符集，可以显示 Ext. A~E 的扩展汉字，日文平假名，以及注音符号等。链接：http://www.babelstone.co.uk/Fonts/Han.html
+*** Sans Serif
+常用的 Sans Serif 字体中，微软的雅黑，苹果的丽黑，Adobe 的思源黑体以及方正的兰亭黑等都是不错的选择。如果觉得雅黑比较挤，可以试试兰亭黑；如果希望能显示更多的扩展汉字，可以用思源黑体。
 
 ** 英文变宽字体
 Han layer 对 orgmode 字体的处理：除了 table，block 等场合使用 fixed-pitch face 外，其它场合使用 variable-pitch。这就产生了一个变宽字体选择的问题。han layer 默认使用 =DejaVu Sans= 字体作为变宽字体。在不做修改的情况下必须先下载安装这一字体才能正常使用。 =DejaVu Sans= 包含比较全的 unicode 符号，是最佳英文变宽字体。链接：http://dejavu-fonts.org/wiki/Main_Page
 
-* 关于 visual-fill-column
+* 关于 org 文档的“版式”
+Org 文档都是纯文本，但是在 org-mode 中显示时会有各种语法高亮以及对齐等，效果并不亚于 YGWYS 的 MS Word. 于是这里借用一下 doc 文档的术语“版式”。
+*** 自动填充
 用 =SPC t L= 设置 ~visual-line~ 的开启/关闭，同时会自动启动/关闭 ~visual-fill-column~.
+*** 等宽和变宽字体
+除了 table 和 block 等之外的地方一律使用变宽字体，这样可以使版面更加紧凑。但是这个功能在 emacsclient 中无效，另外没有在 console emacs 中测试过。
 
 * Keybindings
 | key       | function                           | state  |
