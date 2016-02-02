@@ -123,6 +123,7 @@
     (progn
       (if han-enable-avy-pinyin
           (setq ace-pinyin-use-avy t))
+      (setq ace-pinyin-simplified-chinese-only-p nil)
       (ace-pinyin-global-mode t)
       (spacemacs|hide-lighter ace-pinyin-mode))))
 
