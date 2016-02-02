@@ -43,7 +43,6 @@
 - 在 org-mode 中除了 table 以及 block 等之外使用 variable-pitch（变宽字体）。
 - 修正了 pyim 英文回车上屏和 evil-escape 之间的冲突。
 - 包含了一个自制的 pyim 词库文件（pyim-sgcore.pyim）。
-- 使用修改的 fcitx.el，支持 hybrid state.
 
 * 安装
 用下列命令安装：
@@ -54,7 +53,7 @@
 
 注意路径的大小写。
 
-然后在你的.spacemacs 文件中添加 han layer。编辑风格使用 hybrid：
+然后在你的.spacemacs 文件中添加 han layer。编辑风格推荐使用 hybrid：
 
 #+begin_src emacs-lisp :export yes
   (defun dotspacemacs/layers ()
