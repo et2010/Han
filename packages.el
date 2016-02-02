@@ -146,16 +146,21 @@
     (progn
       (setq visual-fill-column-width 90)
       (setq visual-line-mode-hook nil)
-      ;; Triggering visual-fill-column-mode when visual-line-mode is first turned on
-      (add-hook 'visual-line-mode-hook 'visual-fill-column-mode)
-      ;; 最好将当前buffer的word-wrap设为nil，否则中英文混排时换行都发生在英文单词结束处，非常难看。
       (add-hook 'visual-line-mode-hook
                 '(lambda ()
+                   ;; Triggering visual-fill-column-mode when visual-line-mode is first turned on
+                   (visual-fill-column-mode)
+                   (spacemacs|hide-lighter visual-line-mode)
+                   ;; 最好将当前buffer的word-wrap设为nil，否则中英文混排时换行都发生在英文单词结束处，非常难看。
                    (when (bound-and-true-p word-wrap) (setq-local word-wrap nil)))))
     :config
-    ;; Replace the hook because...
     (progn
-      (remove-hook 'visual-line-mode-hook 'visual-fill-column-mode)
+      ;; Replace the hook because...
+      (remove-hook 'visual-line-mode-hook
+                '(lambda ()
+                   (visual-fill-column-mode)
+                   (spacemacs|hide-lighter visual-line-mode)
+                   (when (bound-and-true-p word-wrap) (setq-local word-wrap nil))))
       ;; ...when visual-line-mode is turned off, visual-fill-column-mode
       ;; isn't turned off as expected. This should fix it:
       (add-hook 'visual-line-mode-hook (lambda ()
