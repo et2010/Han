@@ -176,7 +176,9 @@
   (spacemacs|use-package-add-hook org
     :post-init
     (progn
-      (add-hook 'org-mode-hook 'variable-pitch-mode)
+      (add-hook 'org-mode-hook '(lambda ()
+                                  (variable-pitch-mode)
+                                  (spacemacs|hide-lighter buffer-face-mode)))
       (add-hook 'org-mode-hook '(lambda () (setq-local line-spacing han-org-line-spacing)))
       (eval-after-load "org"
         '(mapc
