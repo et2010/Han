@@ -103,25 +103,25 @@ Han layer 对 orgmode 字体的处理：除了 table，block 等场合使用 fix
 Org 文档都是纯文本，但是在 org-mode 中显示时会有各种语法高亮以及对齐等，效果并不亚于 YGWYS 的 MS Word. 于是这里借用一下 doc 文档的术语“版式”。
 
 ** 自动填充
-用 =SPC t L= 设置 ~visual-line~ 的开启/关闭，同时会自动启动/关闭 ~visual-fill-column~.
+用 @@html:<kbd>@@ SPC t L @@html:</kbd>@@ 设置 ~visual-line~ 的开启/关闭，同时会自动启动/关闭 ~visual-fill-column~.
 ** 等宽和变宽字体
 除了 table 和 block 等之外的地方一律使用变宽字体，这样可以使版面更加紧凑。但是这个功能在 emacsclient 中无效，另外没有在 console emacs 中测试过。
 ** 行距调整
 行距可以通过改变变量 han-org-line-spacing 的值来调整，默认值为 0.0，即不做调整。设为 0.2 可以 *增加* 0.2 倍行距。
 
 * Keybindings
-| key       | function                           | state  |
-|-----------+------------------------------------+--------|
-| ~F6~      | avy-goto-char                      | global |
-| ~F7~      | avy-goto-char-2                    | global |
-| ~M-z~     | avy-zap-to-char-dwim               | global |
-| ~M-Z~     | avy-zap-up-to-char-dwim            | global |
-| ~SPC d~   | avy-goto-char-in-line              | normal |
-| ~SPC o d~ | find-by-pinyin-dired               | normal |
-| ~SPC o y~ | youdao-dictionary-search-at-point+ | normal |
-| ~C-SPC~   | toggle-input-method                | hybrid |
-| ~M-f~     | pyim-forward-word                  | hybrid |
-| ~M-b~     | pyim-backward-word                 | hybrid |
+| key                                    | function                           | state  |
+|----------------------------------------+------------------------------------+--------|
+| @@html:<kbd>@@ F6 @@html:</kbd>@@      | avy-goto-char                      | global |
+| @@html:<kbd>@@ F7 @@html:</kbd>@@      | avy-goto-char-2                    | global |
+| @@html:<kbd>@@ M-z @@html:</kbd>@@     | avy-zap-to-char-dwim               | global |
+| @@html:<kbd>@@ M-Z @@html:</kbd>@@     | avy-zap-up-to-char-dwim            | global |
+| @@html:<kbd>@@ SPC d @@html:</kbd>@@   | avy-goto-char-in-line              | normal |
+| @@html:<kbd>@@ SPC o d @@html:</kbd>@@ | find-by-pinyin-dired               | normal |
+| @@html:<kbd>@@ SPC o y @@html:</kbd>@@ | youdao-dictionary-search-at-point+ | normal |
+| @@html:<kbd>@@ C-SPC @@html:</kbd>@@   | toggle-input-method                | hybrid |
+| @@html:<kbd>@@ M-f @@html:</kbd>@@     | pyim-forward-word                  | hybrid |
+| @@html:<kbd>@@ M-b @@html:</kbd>@@     | pyim-backward-word                 | hybrid |
 
 * 实际效果
 [[./img/demo.png]]
