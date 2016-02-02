@@ -30,13 +30,16 @@
   (push 'chinese-pyim han-packages))
 
 (if (and han-enable-fcitx (not (spacemacs/system-is-mswindows))) ;; disable in Windows
-    (push '(fcitx :location (recipe :fetcher github :repo "et2010/fcitx.el")) han-packages))
+    (push 'fcitx han-packages))
 
 (defun han/init-fcitx ()
   (use-package fcitx
     :init
     (progn
       (setq fcitx-use-dbus t)
+      (setq fcitx-active-evil-states '(insert emacs hybrid))
+      (fcitx-prefix-keys-add "M-m")
+      (fcitx-prefix-keys-add "C-h")
       (fcitx-aggressive-setup))))
 
 (defun han/init-avy-zap ()
