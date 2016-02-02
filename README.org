@@ -25,6 +25,7 @@
    - [[#等宽和变宽字体][等宽和变宽字体]]
    - [[#行距调整][行距调整]]
  - [[#keybindings][Keybindings]]
+ - [[#实际效果][实际效果]]
 
 * 特点
 这个 private layer 作为 spacemacs 官方[[https://github.com/syl20bnr/spacemacs/tree/master/layers/chinese][Chinese layer]]的一个替代， 对 Chinese layer 做了很多改进。主要包含以下 packages：
@@ -101,8 +102,6 @@ Han layer 对 orgmode 字体的处理：除了 table，block 等场合使用 fix
 * 关于 org 文档的“版式”
 Org 文档都是纯文本，但是在 org-mode 中显示时会有各种语法高亮以及对齐等，效果并不亚于 YGWYS 的 MS Word. 于是这里借用一下 doc 文档的术语“版式”。
 
-[[./img/demo.png]]
-
 ** 自动填充
 用 =SPC t L= 设置 ~visual-line~ 的开启/关闭，同时会自动启动/关闭 ~visual-fill-column~.
 ** 等宽和变宽字体
@@ -123,3 +122,6 @@ Org 文档都是纯文本，但是在 org-mode 中显示时会有各种语法高
 | ~C-SPC~   | toggle-input-method                | hybrid |
 | ~M-f~     | pyim-forward-word                  | hybrid |
 | ~M-b~     | pyim-backward-word                 | hybrid |
+
+* 实际效果
+[[./img/demo.png]]
