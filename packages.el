@@ -38,8 +38,7 @@
     (progn
       (setq fcitx-use-dbus t)
       (setq fcitx-active-evil-states '(insert emacs hybrid))
-      (fcitx-prefix-keys-add "M-m")
-      (fcitx-prefix-keys-add "C-h")
+      (fcitx-prefix-keys-add "M-m" "C-h")
       (fcitx-aggressive-setup))))
 
 (defun han/init-avy-zap ()
@@ -199,6 +198,7 @@
                 'org-meta-line
                 'org-block-begin-line
                 'org-block-end-line
+                'org-document-info-keyword
                 'font-lock-warning-face
                 'font-lock-function-name-face
                 'font-lock-variable-name-face
