@@ -58,21 +58,15 @@
 
 #+begin_src emacs-lisp :export yes
   (defun dotspacemacs/layers ()
-    (setq-default
-     dotspacemacs-configuration-layers
-     '(
-       (han :variables
-            han-enable-youdao-dict t
-            ; 在 Linux 下如果希望使用 fcitx 输入法，可以加入下面一行
-            han-enable-fcitx t
-            han-org-line-spacing 0.2)
-       )
-    ))
+    (setq-default dotspacemacs-configuration-layers
+                  '((han :variables
+                         han-enable-youdao-dict t
+                         ;; 在 Linux 下如果希望使用 fcitx 输入法，可以加入下面一行
+                         han-enable-fcitx t
+                         han-org-line-spacing 0.2))))
 
   (defun dotspacemacs/init ()
-    (setq-default
-     dotspacemacs-editing-style 'hybrid)
-    )
+    (setq-default dotspacemacs-editing-style 'hybrid))
 #+end_src
 
 另外，auto-complete layer 在 orgmode 中会引发很多问题，可以用以下方式在 org 中禁用 company 补全：
