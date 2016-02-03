@@ -20,12 +20,12 @@
      - [[#ming][Ming]]
      - [[#sans-serif][Sans Serif]]
    - [[#英文变宽字体][英文变宽字体]]
- - [[#关于-org-文档的“版式”][关于 org 文档的“版式”]]
+ - [[#关于-org-文档的“排版”][关于 org 文档的“排版”]]
    - [[#自动填充][自动填充]]
    - [[#等宽和变宽字体][等宽和变宽字体]]
    - [[#行距调整][行距调整]]
  - [[#keybindings][Keybindings]]
- - [[#实际效果][实际效果]]
+ - [[#版面效果][版面效果]]
 
 * 特点
 这个 private layer 作为 spacemacs 官方[[https://github.com/syl20bnr/spacemacs/tree/master/layers/chinese][Chinese layer]]的一个替代， 对 Chinese layer 做了很多改进。主要包含以下 packages：
@@ -93,13 +93,15 @@
 ** 英文变宽字体
 Han layer 对 orgmode 字体的处理：除了 table，block 等场合使用 fixed-pitch face 外，其它场合使用 variable-pitch。这就产生了一个变宽字体选择的问题。han layer 默认使用 =DejaVu Sans= 字体作为变宽字体。在不做修改的情况下必须先下载安装这一字体才能正常使用。 =DejaVu Sans= 包含比较全的 unicode 符号，是最佳英文变宽字体。链接：http://dejavu-fonts.org/wiki/Main_Page
 
-* 关于 org 文档的“版式”
-Org 文档都是纯文本，但是在 org-mode 中显示时会有各种语法高亮以及对齐等，效果并不亚于 YGWYS 的 MS Word. 于是这里借用一下 doc 文档的术语“版式”。
+* 关于 org 文档的“排版”
+Org 文档都是纯文本，但是在 org-mode 中显示时会有各种语法高亮以及对齐等，效果并不亚于 YGWYS 的 MS Word. 于是这里借用一下 doc 文档的术语“排版”。
 
 ** 自动填充
 用 @@html:<kbd>@@ SPC t L @@html:</kbd>@@ 设置 ~visual-line~ 的开启/关闭，同时会自动启动/关闭 ~visual-fill-column~.
+
 ** 等宽和变宽字体
 除了 table 和 block 等之外的地方一律使用变宽字体，这样可以使版面更加紧凑。但是这个功能在 emacsclient 中无效，另外没有在 console emacs 中测试过。
+
 ** 行距调整
 行距可以通过改变变量 han-org-line-spacing 的值来调整，默认值为 0.0，即不做调整。设为 0.2 可以 *增加* 0.2 倍行距。
 
@@ -117,5 +119,9 @@ Org 文档都是纯文本，但是在 org-mode 中显示时会有各种语法高
 | @@html:<kbd>@@ M-f @@html:</kbd>@@     | pyim-forward-word                  | hybrid |
 | @@html:<kbd>@@ M-b @@html:</kbd>@@     | pyim-backward-word                 | hybrid |
 
-* 实际效果
+* 版面效果
 [[./img/demo.png]]
+
+# Local Variables:
+# org-image-actual-width: (quote (500))
+# End:
