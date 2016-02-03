@@ -1,6 +1,6 @@
 #+OPTIONS: ':nil *:t -:t ::t <:nil H:6 \n:nil ^:nil arch:headline author:t
 #+OPTIONS: c:nil creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t
-#+OPTIONS: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: inline:t num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
 #+OPTIONS: timestamp:t title:t toc:t todo:t |:t
 #+TITLE: README
 #+DATE: <2015-10-09 周五>
