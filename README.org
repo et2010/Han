@@ -108,13 +108,13 @@ Org 文档都是纯文本，但是在 org-mode 中显示时会有各种语法高
 * Keybindings
 | key                                    | function                           | state  |
 |----------------------------------------+------------------------------------+--------|
-| @@html:<kbd>@@ F6 @@html:</kbd>@@      | avy-goto-char                      | global |
-| @@html:<kbd>@@ F7 @@html:</kbd>@@      | avy-goto-char-2                    | global |
 | @@html:<kbd>@@ M-z @@html:</kbd>@@     | avy-zap-to-char-dwim               | global |
 | @@html:<kbd>@@ M-Z @@html:</kbd>@@     | avy-zap-up-to-char-dwim            | global |
 | @@html:<kbd>@@ SPC d @@html:</kbd>@@   | avy-goto-char-in-line              | normal |
 | @@html:<kbd>@@ SPC o d @@html:</kbd>@@ | find-by-pinyin-dired               | normal |
 | @@html:<kbd>@@ SPC o y @@html:</kbd>@@ | youdao-dictionary-search-at-point+ | normal |
+| @@html:<kbd>@@ SPC o c @@html:</kbd>@@ | avy-goto-char                      | normal |
+| @@html:<kbd>@@ SPC o w @@html:</kbd>@@ | avy-goto-char-2                    | normal |
 | @@html:<kbd>@@ C-SPC @@html:</kbd>@@   | toggle-input-method                | hybrid |
 | @@html:<kbd>@@ M-f @@html:</kbd>@@     | pyim-forward-word                  | hybrid |
 | @@html:<kbd>@@ M-b @@html:</kbd>@@     | pyim-backward-word                 | hybrid |
