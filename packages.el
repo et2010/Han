@@ -268,10 +268,8 @@ unwanted space when exporting org-mode to html."
 (defun han/post-init-evil-escape ()
   "Stop evil-escape from interrupting input from pyim, especially
 when you need to hit Enter while in pyim to fast input English"
-  (defun input-method-is-on-p ()
-    (bound-and-true-p current-input-method))
-  (setq evil-escape-inhibit-functions
-        (append '(input-method-is-on-p) evil-escape-inhibit-functions)))
+  (push (lambda () (bound-and-true-p current-input-method))
+        evil-escape-inhibit-functions))
 
 ;;
 ;; Often the body of an initialize function uses `use-package'
