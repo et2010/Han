@@ -17,6 +17,7 @@
         pangu-spacing
         visual-fill-column
         org
+        org-cliplink
         evil-escape))
 
 ;; List of packages to exclude.
@@ -31,6 +32,10 @@
 
 (if (and han-enable-fcitx (not (spacemacs/system-is-mswindows))) ;; disable in Windows
     (push 'fcitx han-packages))
+
+(defun han/init-org-cliplink ()
+  (use-package org-cliplink
+    :defer t))
 
 (defun han/init-fcitx ()
   (use-package fcitx
