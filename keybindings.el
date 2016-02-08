@@ -11,8 +11,9 @@
 ;;; License: GPLv3
 
 (evil-leader/set-key "d" 'avy-goto-char-in-line)
-(global-set-key (kbd "<f6>") 'avy-goto-char)
-(global-set-key (kbd "<f7>") 'avy-goto-char-2)
 (spacemacs/declare-prefix "o" "Chinese")
 (evil-leader/set-key "od" 'find-by-pinyin-dired)
 (evil-leader/set-key "oy" 'youdao-dictionary-search-at-point+)
+(evil-leader/set-key "ol" 'org-cliplink)
+(evil-leader/set-key "oc" 'avy-goto-char)
+(evil-leader/set-key "ow" 'avy-goto-char-2)
