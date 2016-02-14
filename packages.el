@@ -144,7 +144,22 @@
       (add-hook 'org-mode-hook
                 '(lambda ()
                    ;; use hard space instead of soft space
-                   (setq-local pangu-spacing-real-insert-separtor t))))))
+                   (setq-local pangu-spacing-real-insert-separtor t)))
+      (with-eval-after-load "org-element"
+        (defadvice pangu-spacing-search-and-replace (around pangu-spacing-org-link-fix activate)
+          "Replace regexp with match in buffer."
+          (if (eq 'org-mode (buffer-local-value 'major-mode (current-buffer)))
+              (pangu-spacing-search-buffer regexp (point-min) (point-max)
+                                           (if (member 'link
+                                                       (mapcar
+                                                        (lambda (point)
+                                                          (save-excursion
+                                                            (goto-char point)
+                                                            (org-element-type (org-element-context))))
+                                                        (list (match-beginning 0) (match-end 0))))
+                                               (goto-char (match-end 0))
+                                             (replace-match match nil nil)))
+            ad-do-it))))))
 
 (defun han/init-visual-fill-column ()
   "Initialize visual-fill-column"
