@@ -150,15 +150,16 @@
           "Replace regexp with match in buffer."
           (if (eq 'org-mode (buffer-local-value 'major-mode (current-buffer)))
               (pangu-spacing-search-buffer regexp (point-min) (point-max)
-                                           (if (member 'link
-                                                       (mapcar
-                                                        (lambda (point)
-                                                          (save-excursion
-                                                            (goto-char point)
-                                                            (org-element-type (org-element-context))))
-                                                        (list (match-beginning 0) (match-end 0))))
-                                               (goto-char (match-end 0))
-                                             (replace-match match nil nil)))
+                                           (when (not (member 'link
+                                                            (save-match-data
+                                                              (save-excursion
+                                                                (let ((p1 (match-beginning 1))
+                                                                      (p2 (match-beginning 2)))
+                                                                  (mapcar (lambda (pt) (goto-char pt)
+                                                                            (org-element-type
+                                                                             (org-element-context)))
+                                                                          (list p1 p2)))))))
+                                               (replace-match match nil nil)))
             ad-do-it))))))
 
 (defun han/init-visual-fill-column ()
