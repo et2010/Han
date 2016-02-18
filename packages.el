@@ -204,6 +204,7 @@ of the match group is from an org-link element"
   (spacemacs|use-package-add-hook org
     :post-init
     (progn
+      (setq org-highlight-latex-and-related '(latex))
       (add-hook 'org-mode-hook '(lambda ()
                                   (variable-pitch-mode)
                                   (spacemacs|hide-lighter buffer-face-mode)))
@@ -219,11 +220,14 @@ of the match group is from an org-link element"
               (face-attribute face :inherit))))
           (list 'org-code
                 'org-block
-                'org-table
-                'org-meta-line
                 'org-block-begin-line
                 'org-block-end-line
                 'org-document-info-keyword
+                'org-latex-and-related
+                'org-meta-line
+                ;; 'org-link
+                'org-table
+                'org-verbatim
                 'font-lock-warning-face
                 'font-lock-function-name-face
                 'font-lock-variable-name-face
