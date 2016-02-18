@@ -146,22 +146,25 @@
                 '(lambda ()
                    ;; use hard space instead of soft space
                    (setq-local pangu-spacing-real-insert-separtor t)))
+
       (with-eval-after-load "org-element"
         (defadvice pangu-spacing-search-and-replace (around pangu-spacing-org-link-fix activate)
-          "Replace regexp with match in buffer."
-          (if (eq 'org-mode (buffer-local-value 'major-mode (current-buffer)))
-              (pangu-spacing-search-buffer regexp (point-min) (point-max)
-                                           (when (not (member 'link
-                                                            (save-match-data
-                                                              (save-excursion
-                                                                (let ((p1 (match-beginning 1))
-                                                                      (p2 (match-beginning 2)))
-                                                                  (mapcar (lambda (pt) (goto-char pt)
-                                                                            (org-element-type
-                                                                             (org-element-context)))
-                                                                          (list p1 p2)))))))
-                                               (replace-match match nil nil)))
-            ad-do-it))))))
+          "Addvise the function not to replace the match when one
+of the match group is from an org-link element"
+          (if (not (eq 'org-mode (buffer-local-value 'major-mode (current-buffer))))
+              ad-do-it
+            (pangu-spacing-search-buffer
+             regexp (point-min) (point-max)
+             (when (not (member 'link
+                                (save-match-data
+                                  (save-excursion
+                                    (let ((p1 (match-beginning 1))
+                                          (p2 (match-beginning 2)))
+                                      (mapcar (lambda (pt) (goto-char pt)
+                                                (org-element-type
+                                                 (org-element-context)))
+                                              (list p1 p2)))))))
+               (replace-match match nil nil)))))))))
 
 (defun han/init-visual-fill-column ()
   "Initialize visual-fill-column"
