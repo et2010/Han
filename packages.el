@@ -94,7 +94,8 @@
       (setq pyim-use-tooltip 'pos-tip)
       ;; (setq pyim-enable-words-predict nil)
       (setq pyim-dicts-directory (concat user-emacs-directory "private/han")
-            pyim-personal-file (concat spacemacs-cache-directory "pyim-personal.txt")
+            pyim-personal-file (concat spacemacs-cache-directory "pyim/pyim-personal.txt")
+            pyim-property-file (concat spacemacs-cache-directory "pyim/pyim-words-property.txt")
             pyim-dicts
             '((:name "sogou" :file "~/.emacs.d/private/han/pyim-sgcore.pyim" :coding utf-8-unix :dict-type pinyin-dict)))
       (eval-after-load "company"
