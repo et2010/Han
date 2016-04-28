@@ -43,7 +43,7 @@
     (progn
       (setq fcitx-use-dbus t)
       (setq fcitx-active-evil-states '(insert emacs hybrid))
-      (fcitx-prefix-keys-add "M-m" "C-h")
+      (fcitx-prefix-keys-add "M-m")
       (fcitx-aggressive-setup))))
 
 (defun han/init-avy-zap ()
