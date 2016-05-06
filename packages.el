@@ -145,7 +145,7 @@
       (add-hook 'org-mode-hook
                 '(lambda ()
                    ;; use hard space instead of soft space
-                   (setq-local pangu-spacing-real-insert-separtor t)))
+                   (setq-local pangu-spacing-real-insert-separtor nil)))
 
       (with-eval-after-load "org-element"
         (defadvice pangu-spacing-search-and-replace (around pangu-spacing-org-link-fix activate)
