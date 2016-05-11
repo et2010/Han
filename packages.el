@@ -204,7 +204,7 @@ of the match group is from an org-link element"
   (spacemacs|use-package-add-hook org
     :post-init
     (progn
-      (setq org-highlight-latex-and-related '(latex))
+      (setq org-highlight-latex-and-related '(latex script entities))
       (add-hook 'org-mode-hook '(lambda ()
                                   (variable-pitch-mode)
                                   (spacemacs|hide-lighter buffer-face-mode)))
