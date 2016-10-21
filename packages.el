@@ -210,15 +210,22 @@ of the match group is from an org-link element"
              (han-adjoin-to-list-or-symbol
               'fixed-pitch
               (face-attribute face :inherit))))
-          (list 'org-code
+          (list 'bold
+                'italic
+                'org-checkbox
+                'org-code
                 'org-block
                 'org-block-begin-line
                 'org-block-end-line
                 'org-document-info-keyword
+                'org-done
+                'org-formula
                 'org-latex-and-related
                 'org-meta-line
                 ;; 'org-link
+                'org-special-keyword
                 'org-table
+                'org-todo
                 'org-verbatim
                 'font-lock-warning-face
                 'font-lock-function-name-face
