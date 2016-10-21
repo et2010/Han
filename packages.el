@@ -12,26 +12,18 @@
 
 (setq han-packages
       '(ace-pinyin
+        (adaptive-wrap :excluded t)
         avy-zap
+        (chinese-pyim :toggle (eq han-default-input-method 'pinyin))
+        (chinese-wbim :toggle (eq han-default-input-method 'wubi))
+        evil-escape
         find-by-pinyin-dired
+        (fcitx :toggle han-enable-fcitx)
         pangu-spacing
-        visual-fill-column
         org
         org-cliplink
-        evil-escape))
-
-;; List of packages to exclude.
-(setq gtd-excluded-packages '(adaptive-wrap))
-
-(if han-enable-youdao-dict
-    (push 'youdao-dictionary han-packages))
-
-(if (eq han-default-input-method 'wubi)
-    (push 'chinese-wbim han-packages)
-  (push 'chinese-pyim han-packages))
-
-(if (and han-enable-fcitx (not (spacemacs/system-is-mswindows))) ;; disable in Windows
-    (push 'fcitx han-packages))
+        visual-fill-column
+        (youdao-dictionary :toggle han-enable-youdao-dict)))
 
 (defun han/init-org-cliplink ()
   (use-package org-cliplink
