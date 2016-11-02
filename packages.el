@@ -90,14 +90,6 @@
             pyim-property-file (concat spacemacs-cache-directory "pyim/pyim-words-property.txt")
             pyim-dicts
             '((:name "sogou" :file "~/.emacs.d/private/han/pyim-sgcore.pyim" :coding utf-8-unix :dict-type pinyin-dict)))
-      (eval-after-load "company"
-        '(progn
-           (require 'chinese-pyim-company)
-           ;; uncomment following line if you wanna enable company
-           ;; (setq pyim-company-max-length 6)
-           ;; comment out following line if you wanna enable company
-           (setq pyim-company-complete-chinese-enable nil)
-           ))
       (setq pyim-isearch-enable-pinyin-search t
             isearch-search-fun-function 'pyim-isearch-pinyin-search-function)
       (setq-default pyim-english-input-switch-functions '(pyim-probe-isearch-mode
